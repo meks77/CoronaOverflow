@@ -19,7 +19,7 @@ Eine Plattform für alle Arten von Corona-Lifehacks. Die Platform ist ein Medium
  also für Privatleute, Leute im Home-office oder mit Kindern daheim, Personal in Pflegeeinrichtungen und Krankenhäusern, ...
   
 ----
-Offene Fragen:
+# Offene Fragen - hier sammeln:
 Wenn Leute auf der Platform posten - welche Lizenz hat der Inhalt? CreativeCommons automatisch?...
 
 -----
@@ -36,12 +36,12 @@ People all over the world face themselves in similar situations through the pand
 ## What it does
 CoronaOverflow provides general guidance about safe conduct in times of coronavirus. Users post experiences, solutions and lifehacks in posts, giving public instructions for others to use. Posts may be searched for by hashtags and may be subscribed to follow them. Content is rated by the community, which promotes the display of the best solution and prevents spread of misinformation.
 
-## How I built it
+## How we built it
 
-## Challenges I ran into
+## Challenges we ran into
 
-## Accomplishments that I'm proud of
+## Accomplishments that we are proud of
 
-## What I learned
+## What we learned
 
 ## What's next for CoronaOverflow

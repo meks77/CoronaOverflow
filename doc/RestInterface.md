@@ -11,17 +11,8 @@
         "date": "2020-04-24T17:18:27.600Z",
         "title": "string",
         "text": "string",
-        "image": "string",
-        "upVote": [
-            {
-                "userID": 0
-            }
-        ],
-        "downVote": [
-            {
-                "userid": 0
-            }
-        ]
+        "votes": { "up": "123", "down": "4545" },
+        "voted": false
   }
 ]
 `

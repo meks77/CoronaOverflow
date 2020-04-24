@@ -1,2 +1,8 @@
 .idea
-.iml
+*.iml
+*.iws
+target/
+.classpath
+.project
+.settings/
+**/*tern-project

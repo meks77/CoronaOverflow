@@ -7,7 +7,7 @@ export function HeaderOptionsNoTitle() {
       backgroundColor: colors.primary_white,
       height: 0,
     },
-    headerTintColor: colors.primary_black,
+    headerTintColor: colors.dark_grey,
     headerTitleStyle: {
       fontSize: 25,
     },
@@ -22,9 +22,9 @@ export function HeaderOptionsWithTitle(title: string) {
       backgroundColor: colors.primary_white,
       height: 50,
     },
-    headerTintColor: colors.primary_black,
+    headerTintColor: colors.dark_grey,
     headerTitleStyle: {
-      fontWeight: '200',
+      //fontWeight: '200',
       fontSize: 25,
     },
   };

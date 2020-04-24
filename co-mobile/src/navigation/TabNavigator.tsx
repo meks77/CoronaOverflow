@@ -1,8 +1,11 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {HomeStack} from './stacks/HomeStack';
 import {colors} from '../styles/Colors';
+import PostingsStack from "./stacks/PostingsStack";
+import HomeStack from "./stacks/HomeStack";
+import UserStack from "./stacks/UserStack";
+import InfoStack from "./stacks/InfoStack";
 Icon.loadFont();
 
 const Tab = createBottomTabNavigator();
@@ -30,17 +33,17 @@ export default function TabNavigator() {
         },
       })}
       tabBarOptions={{
-        activeTintColor: colors.primary_light_green,
-        inactiveTintColor: colors.secondary_light_green,
+        activeTintColor: colors.dark_grey,
+        inactiveTintColor: colors.light_grey,
         activeBackgroundColor: colors.primary_white,
         inactiveBackgroundColor: colors.primary_white,
         style: {height: 70, borderTopWidth: 0},
         showLabel: false,
       }}>
       <Tab.Screen name="Home" component={HomeStack} />
-      <Tab.Screen name="Postings" component={HomeStack} />
-      <Tab.Screen name="User" component={HomeStack} />
-      <Tab.Screen name="Info" component={HomeStack} />
+      <Tab.Screen name="Postings" component={PostingsStack} />
+      <Tab.Screen name="User" component={UserStack} />
+      <Tab.Screen name="Info" component={InfoStack} />
     </Tab.Navigator>
   );
 }

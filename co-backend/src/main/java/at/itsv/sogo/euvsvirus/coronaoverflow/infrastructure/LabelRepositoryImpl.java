@@ -1,22 +1,25 @@
 package at.itsv.sogo.euvsvirus.coronaoverflow.infrastructure;
 
+import at.itsv.sogo.euvsvirus.coronaoverflow.infrastructure.entities.LabelDbEntity;
 import at.itsv.sogo.euvsvirus.coronaoverflow.model.aggregates.Label;
-import at.itsv.sogo.euvsvirus.coronaoverflow.model.aggregates.Name;
 import at.itsv.sogo.euvsvirus.coronaoverflow.model.repos.LabelRepository;
 
 import javax.enterprise.context.ApplicationScoped;
-import java.util.Arrays;
+import javax.inject.Inject;
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 
 @ApplicationScoped
 public class LabelRepositoryImpl implements LabelRepository {
 
+    @Inject
+    LabelDbEntityTranslator labelTranslator;
+
     @Override
     public Collection<Label> getAllLables() {
-        return Arrays.asList(new Label(new Name("label1")),
-                new Label(new Name("label2")),
-                new Label(new Name("label3"))
-        );
+        return LabelDbEntity.<LabelDbEntity>findAll().stream()
+                .map(labelTranslator::translate)
+                .collect(Collectors.toList());
     }
 }

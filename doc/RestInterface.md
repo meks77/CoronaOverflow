@@ -11,7 +11,7 @@
         "date": "2020-04-24T17:18:27.600Z",
         "title": "string",
         "text": "string",
-        "votes": { "up": "123", "down": "4545" },
+        "votes": { "up": 123, "down": 4545 },
         "voted": false
   }
 ]

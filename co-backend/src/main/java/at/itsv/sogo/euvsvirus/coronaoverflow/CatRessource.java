@@ -1,4 +1,4 @@
-package org.euvsvirus.at.coronaflow;
+package at.itsv.sogo.euvsvirus.coronaoverflow;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

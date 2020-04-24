@@ -26,7 +26,7 @@ Wenn Leute auf der Platform posten - welche Lizenz hat der Inhalt? CreativeCommo
 # For registration:
 
 # Here's the elevator pitch
-Especially in extreme situations, like the one we all are currently in, people become very creative in finding solutions to all kinds of new challenges - this Hackathon is the best example. The pandemic can best be fought by effective exchange of knowldge and experiences. We provide a community driven platform to collect and share these ideas in the context of Corona, so they are easily accessible from all over the world.
+Especially in extreme situations, like the one we all are currently in, people become very creative in finding solutions to all kinds of new challenges - this Hackathon is the best example. The pandemic can best be fought by effective exchange of knowldge and experiences. We provide the community driven platform CoronaOverflow to collect and share these ideas in the context of Corona, so they are easily accessible from all over the world.
 
 # Here's the whole story
 

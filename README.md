@@ -20,6 +20,8 @@ Eine Plattform für alle Arten von Corona-Lifehacks. Die Platform ist ein Medium
   
 ----
 # Offene Fragen - hier sammeln:
+Logo ?
+
 Wenn Leute auf der Platform posten - welche Lizenz hat der Inhalt? CreativeCommons automatisch?...
 
 -----

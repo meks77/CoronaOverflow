@@ -5,7 +5,7 @@
 ## Posting List
 `
 [
-  {
+    {
         "postingID": 0,
         "userID": 0,
         "date": "2020-04-24T17:18:27.600Z",
@@ -13,14 +13,14 @@
         "text": "string",
         "image": "string",
         "upVote": [
-          {
-            "userID": 0
-          }
+            {
+                "userID": 0
+            }
         ],
         "downVote": [
-          {
-            "userid": 0
-          }
+            {
+                "userid": 0
+            }
         ]
   }
 ]
@@ -47,4 +47,7 @@
 
 ## User Registration
 `
+{
+    "username": "string"
+}
 `

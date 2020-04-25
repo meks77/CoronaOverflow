@@ -1,6 +1,6 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
-import {HeaderOptionsWithTitle} from '../header/HeaderOptions';
+import {HeaderOptionsNoTitle} from '../header/HeaderOptions';
 import {InfoScreen} from "../../features/info/InfoScreen";
 
 const Stack = createStackNavigator();
@@ -11,7 +11,7 @@ export default function InfoStack() {
             <Stack.Screen
                 name="Info"
                 component={InfoScreen}
-                options={HeaderOptionsWithTitle('Info')}
+                options={HeaderOptionsNoTitle}
             />
         </Stack.Navigator>
     );

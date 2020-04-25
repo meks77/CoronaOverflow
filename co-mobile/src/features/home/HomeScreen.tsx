@@ -33,7 +33,7 @@ export class HomeScreen extends React.Component {
                 paddingVertical: 25
               }}
               titleStyle={{color: colors.primary_light_green, fontSize: 25, marginBottom: 10}}
-              subtitleStyle={{color: colors.dark_grey, fontSize: 17}}
+              subtitleStyle={{color: colors.dark_grey, fontSize: 17, lineHeight: 25}}
               subtitle={this.state.advices.subtitle}
               bottomDivider
           />
@@ -44,7 +44,7 @@ export class HomeScreen extends React.Component {
                     title={item.question}
                     titleStyle={{textAlign: "left", fontSize: 20, fontWeight: "normal", color: colors.primary_light_green}}
                     containerStyle={{marginVertical: 30}}>
-                  <Text style={{marginBottom: 10, fontSize: 17, color: colors.dark_grey}}>
+                  <Text style={{marginBottom: 10, fontSize: 17, lineHeight: 25, color: colors.dark_grey}}>
                     {item.answer}
                   </Text>
                 </Card>

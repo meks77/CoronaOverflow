@@ -58,3 +58,20 @@ export function postPosting(userID: string, label: string, text: string, title: 
             });
     });
 }
+
+export function sendVoting(userID: string, route: string) {
+    return new Promise((resolve, reject) => {
+        fetch(Routes.BASEURL + route, {
+            method: 'PUT',
+            headers: {
+                "X-CO-USERID": userID
+            },
+        })
+            .then((response) => {
+                resolve(response);
+            })
+            .catch((error) => {
+                reject(error)
+            });
+    });
+}

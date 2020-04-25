@@ -5,7 +5,7 @@ import {colors} from '../../styles/Colors';
 import {Label} from "./interfaces/Label";
 import {Posting} from "./interfaces/Posting";
 import {PostingsCard} from "./components/PostingsCard";
-import {fetchData, postPosting} from "../../services/rest/FetchData";
+import {fetchData, postPosting, sendVoting} from "../../services/rest/FetchData";
 import {Button, Icon, Input, Overlay, SearchBar, Text} from "react-native-elements";
 import {searchPosting} from "../../data/Search";
 import {getUsername} from "../../data/Username";
@@ -47,7 +47,6 @@ export class PostingsScreen extends React.Component<Props> {
         fetchData(label.link.url, label.link.method)
             .then((result: any) => {
                 console.log(result);
-                //this.setState({labelsList: result});
                 this.setState({
                     postingsList: result,
                     displayList: result
@@ -60,7 +59,21 @@ export class PostingsScreen extends React.Component<Props> {
 
     sendVote = (item: Posting, vote: string) => {
         vote = this.checkVote(item, vote);
+        let route = "/voting/postingUUID1/voteUp"
+        if (vote === "down") {
+            route = "/voting/postingUUID1/voteUp"
+        }
         this.updateVote(item, vote);
+        console.log(item.votings.links)
+        console.log(route)
+        getUsername()
+            .then((userID: string) => {
+                console.log(userID)
+                sendVoting(route, userID)
+                    .then((response) => {
+                        console.log(response);
+                    })
+            })
     }
 
     checkVote = (item: Posting, vote: string): string =>    {
@@ -113,7 +126,6 @@ export class PostingsScreen extends React.Component<Props> {
         console.log(title, message);
         getUsername()
             .then((userID: string) => {
-                console.log(userID, this.props.route.params.label.label, message, title)
                 postPosting(userID, this.props.route.params.label.label, message, title)
                     .then((response) => {
                         this.fetchPostings();

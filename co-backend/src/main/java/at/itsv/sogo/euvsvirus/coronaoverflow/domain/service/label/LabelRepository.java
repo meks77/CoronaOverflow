@@ -1,4 +1,4 @@
-package at.itsv.sogo.euvsvirus.coronaoverflow.domain.repos;
+package at.itsv.sogo.euvsvirus.coronaoverflow.domain.service.label;
 
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.label.Label;
 

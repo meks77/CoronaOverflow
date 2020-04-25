@@ -1,8 +1,7 @@
-package at.itsv.sogo.euvsvirus.coronaoverflow.infrastructure;
+package at.itsv.sogo.euvsvirus.coronaoverflow.adapter.persistence.labels;
 
-import at.itsv.sogo.euvsvirus.coronaoverflow.infrastructure.entities.LabelDbEntity;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.label.Label;
-import at.itsv.sogo.euvsvirus.coronaoverflow.domain.repos.LabelRepository;
+import at.itsv.sogo.euvsvirus.coronaoverflow.domain.service.label.LabelRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;

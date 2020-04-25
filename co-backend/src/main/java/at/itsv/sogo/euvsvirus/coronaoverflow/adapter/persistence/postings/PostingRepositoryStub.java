@@ -1,14 +1,13 @@
-package at.itsv.sogo.euvsvirus.coronaoverflow.infrastructure;
+package at.itsv.sogo.euvsvirus.coronaoverflow.adapter.persistence.postings;
 
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.label.Label;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.label.LabelId;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.label.Title;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting.CreatePostingCmd;
-import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.Id;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting.Posting;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting.PostingText;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.user.UserId;
-import at.itsv.sogo.euvsvirus.coronaoverflow.domain.repos.PostingRepository;
+import at.itsv.sogo.euvsvirus.coronaoverflow.domain.service.postings.PostingRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.util.Collection;

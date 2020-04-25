@@ -1,4 +1,4 @@
-package at.itsv.sogo.euvsvirus.coronaoverflow.infrastructure.entities;
+package at.itsv.sogo.euvsvirus.coronaoverflow.adapter.persistence.labels;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 

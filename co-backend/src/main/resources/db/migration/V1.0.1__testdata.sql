@@ -27,19 +27,19 @@ insert into POSTS (UUID, USER_ID, TITLE, LABEL_ID, CREATED, TEXT)
 
 insert into VOTINGS (USER_ID, POST_ID, VOTED) values ( 'user1', 'postingUUID1', 'UP');
 insert into VOTINGS (USER_ID, POST_ID, VOTED) values ( 'user1', 'postingUUID2', 'DOWN');
-insert into VOTINGS (USER_ID, POST_ID, VOTED) values ( 'user1', 'postingUUID3', 'UP');
+insert into VOTINGS (USER_ID, POST_ID, VOTED) values ( 'user1', 'postingUUID3', 'DOWN');
 insert into VOTINGS (USER_ID, POST_ID, VOTED) values ( 'user2', 'postingUUID1', 'UP');
-insert into VOTINGS (USER_ID, POST_ID, VOTED) values ( 'user2', 'postingUUID2', 'DOWN');
-insert into VOTINGS (USER_ID, POST_ID, VOTED) values ( 'user2', 'postingUUID3', 'UP');
+insert into VOTINGS (USER_ID, POST_ID, VOTED) values ( 'user2', 'postingUUID2', 'UP');
+insert into VOTINGS (USER_ID, POST_ID, VOTED) values ( 'user2', 'postingUUID3', 'DOWN');
 insert into VOTINGS (USER_ID, POST_ID, VOTED) values ( 'user3', 'postingUUID1', 'UP');
 insert into VOTINGS (USER_ID, POST_ID, VOTED) values ( 'user3', 'postingUUID2', 'DOWN');
-insert into VOTINGS (USER_ID, POST_ID, VOTED) values ( 'user3', 'postingUUID3', 'UP');
+insert into VOTINGS (USER_ID, POST_ID, VOTED) values ( 'user3', 'postingUUID3', 'DOWN');
 insert into VOTINGS (USER_ID, POST_ID, VOTED) values ( 'user4', 'postingUUID1', 'UP');
-insert into VOTINGS (USER_ID, POST_ID, VOTED) values ( 'user4', 'postingUUID2', 'DOWN');
+insert into VOTINGS (USER_ID, POST_ID, VOTED) values ( 'user4', 'postingUUID2', 'UP');
 insert into VOTINGS (USER_ID, POST_ID, VOTED) values ( 'user4', 'postingUUID3', 'UP');
 insert into VOTINGS (USER_ID, POST_ID, VOTED) values ( 'user5', 'postingUUID1', 'UP');
 insert into VOTINGS (USER_ID, POST_ID, VOTED) values ( 'user5', 'postingUUID2', 'DOWN');
-insert into VOTINGS (USER_ID, POST_ID, VOTED) values ( 'user5', 'postingUUID3', 'UP');
+insert into VOTINGS (USER_ID, POST_ID, VOTED) values ( 'user5', 'postingUUID3', 'DOWN');
 insert into VOTINGS (USER_ID, POST_ID, VOTED) values ( 'user6', 'postingUUID1', 'UP');
 insert into VOTINGS (USER_ID, POST_ID, VOTED) values ( 'user6', 'postingUUID2', 'DOWN');
 insert into VOTINGS (USER_ID, POST_ID, VOTED) values ( 'user6', 'postingUUID3', 'UP');

@@ -19,27 +19,43 @@ url: /labels
 ```json
 [
     {
-        "postingID": 0,
-        "userID": 0,
+        "user": { "displayName":  "steve.jobs" },
         "date": "2020-04-24T17:18:27.600Z",
         "title": "string",
         "text": "string",
-        "votes": { "up": 123, "down": 4545 },
-        "voted": false
-  }
+        "votings": { 
+            "up": 123, 
+            "down": 4545,
+            "voted": "up",
+            "links": [
+              { "action": "voteUp", "method": "PUT", "url": "/posting/postingId/voteUp" },
+              { "action": "voteDown", "method": "PUT", "url": "/posting/postingId/voteDown" }
+            ]}  
+    }
 ]
 ```
 
 ## Post
 ```json
 {
-    "userID": 0,
+    "user": { "displayName":  "steve.jobs" },
     "date": "2020-04-24T17:18:27.600Z",
     "title": "string",
     "text": "string",
     "image": "string"
 }
 ```
+
+## In Case of Error, Statuscode != 200
+```json
+[
+    {
+        "summary": "string",
+        "errortext": "string"
+    }
+]
+```
+
 
 ## Vote
 ```json

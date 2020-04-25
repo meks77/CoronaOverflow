@@ -1,7 +1,9 @@
 package at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting;
 
-import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.Timestamp;
-import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.Title;
+import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.Id;
+import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.label.LabelId;
+import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.label.Title;
+import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.user.UserId;
 
 import java.time.ZonedDateTime;
 import java.util.Objects;
@@ -9,19 +11,19 @@ import java.util.UUID;
 
 public class CreatePostingCmd {
 
-    private final Id id;
+    private final PostingId id;
     private final Title title;
-    private final Id labelId;
+    private final LabelId labelId;
     private final Timestamp created;
     private final PostingText text;
-    private final Id userId;
+    private final UserId userId;
 
-    public CreatePostingCmd(Id userId, Title title, Id labelId, PostingText text) {
+    public CreatePostingCmd(UserId userId, Title title, LabelId labelId, PostingText text) {
         Objects.requireNonNull(text, "text");
         Objects.requireNonNull(labelId, "labelId");
         Objects.requireNonNull(title, "title");
         Objects.requireNonNull(userId, "userId");
-        id = new Id(UUID.randomUUID().toString());
+        id = new PostingId(UUID.randomUUID().toString());
         created = new Timestamp(ZonedDateTime.now());
         this.userId = userId;
         this.title = title;
@@ -29,7 +31,7 @@ public class CreatePostingCmd {
         this.text = text;
     }
 
-    public Id getId() {
+    public PostingId getId() {
         return id;
     }
 
@@ -37,7 +39,7 @@ public class CreatePostingCmd {
         return title;
     }
 
-    public Id getLabelId() {
+    public LabelId getLabelId() {
         return labelId;
     }
 
@@ -49,7 +51,7 @@ public class CreatePostingCmd {
         return text;
     }
 
-    public Id getUserId() {
+    public UserId getUserId() {
         return userId;
     }
 }

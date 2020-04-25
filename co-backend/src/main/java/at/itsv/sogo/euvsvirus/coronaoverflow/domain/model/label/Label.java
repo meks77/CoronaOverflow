@@ -1,4 +1,4 @@
-package at.itsv.sogo.euvsvirus.coronaoverflow.domain.model;
+package at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.label;
 
 public class Label {
 

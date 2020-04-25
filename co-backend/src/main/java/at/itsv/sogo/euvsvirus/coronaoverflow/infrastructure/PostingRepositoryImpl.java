@@ -1,9 +1,9 @@
 package at.itsv.sogo.euvsvirus.coronaoverflow.infrastructure;
 
-import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.Label;
-import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.Title;
+import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.label.Label;
+import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.label.Title;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting.CreatePostingCmd;
-import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting.Id;
+import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.Id;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting.Posting;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting.PostingText;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.repos.PostingRepository;

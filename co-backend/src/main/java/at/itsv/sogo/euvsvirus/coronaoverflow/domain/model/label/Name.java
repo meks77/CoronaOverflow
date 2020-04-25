@@ -1,4 +1,6 @@
-package at.itsv.sogo.euvsvirus.coronaoverflow.domain.model;
+package at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.label;
+
+import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.ValueObject;
 
 @ValueObject
 public class Name {

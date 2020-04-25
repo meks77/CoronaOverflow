@@ -2,16 +2,18 @@ package at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting;
 
 
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.AggregateRoot;
-import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.Timestamp;
-import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.Title;
+import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.Id;
+import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.label.LabelId;
+import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.label.Title;
+import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.user.UserId;
 
 @AggregateRoot
 public class Posting {
 
-    private Id id;
-    private Id userId;
+    private PostingId id;
+    private UserId userId;
     private Title title;
-    private Id labelId;
+    private LabelId labelId;
     private Timestamp created;
     private PostingText text;
     private Votes votes;

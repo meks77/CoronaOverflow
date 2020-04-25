@@ -1,4 +1,4 @@
-package at.itsv.sogo.euvsvirus.coronaoverflow.domain.model;
+package at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting;
 
 import java.time.ZonedDateTime;
 import java.util.Objects;

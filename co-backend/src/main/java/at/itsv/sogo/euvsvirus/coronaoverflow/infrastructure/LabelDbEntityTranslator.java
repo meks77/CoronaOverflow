@@ -1,8 +1,8 @@
 package at.itsv.sogo.euvsvirus.coronaoverflow.infrastructure;
 
 import at.itsv.sogo.euvsvirus.coronaoverflow.infrastructure.entities.LabelDbEntity;
-import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.Label;
-import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.Name;
+import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.label.Label;
+import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.label.Name;
 
 import javax.enterprise.context.ApplicationScoped;
 

@@ -1,7 +1,7 @@
 package at.itsv.sogo.euvsvirus.coronaoverflow.adapter.rest.postings;
 
-import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.Label;
-import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.Name;
+import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.label.Label;
+import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.label.Name;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.repos.PostingRepository;
 
 import javax.inject.Inject;

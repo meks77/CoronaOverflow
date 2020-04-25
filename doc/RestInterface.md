@@ -1,4 +1,6 @@
 # Url
+# Http Header fields:
+user id in http header X-CO-USERID
 
 # Json Structure
 url: /labels

@@ -5,10 +5,13 @@ import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.voting.Vote;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.voting.Votings;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.service.systemmessages.MessageEventStream;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
+@ApplicationScoped
 public class VotingService {
 
     @Inject

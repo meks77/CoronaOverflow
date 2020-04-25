@@ -6,13 +6,12 @@ import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.voting.UpVote;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.voting.Vote;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.voting.Votings;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.service.votings.VotingsRepository;
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.enterprise.context.ApplicationScoped;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@ApplicationScoped
 public class VotingsRepositoryJpa implements VotingsRepository {
     @Override
     public Votings loadVotings(PostingId postingId) {

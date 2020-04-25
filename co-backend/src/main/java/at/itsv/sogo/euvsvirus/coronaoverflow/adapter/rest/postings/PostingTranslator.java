@@ -19,7 +19,7 @@ public class PostingTranslator {
                 .withDate(ZonedDateTime.ofInstant(posting.created().timestamp().toInstant(), ZoneId.of("UTC"))
                         .format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) + "Z")
                 .withVoted(false)
-                .withVotes(new VotesDto(posting.votes().upVotes(), posting.votes().downVotes()))
+                .withVotes(new VotesDto(0, 0))
                 .build();
     }
 }

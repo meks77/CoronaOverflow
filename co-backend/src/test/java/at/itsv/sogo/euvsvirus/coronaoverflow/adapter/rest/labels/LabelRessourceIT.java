@@ -38,14 +38,14 @@ class LabelRessourceIT {
                 .when().get(postingsUrl)
                 .then()
                 .statusCode(SC_OK)
-                .body("postingID", equalTo(11L))
-                .body("userID", equalTo(25L))
-                .body("date", equalTo("2020-04-24T17:18:27.600Z"))
-                .body("title", equalTo("Posting Title of Posting 1 Label Z"))
-                .body("text", equalTo("Posting Text of Posting 1 Label Z"))
-                .body("votes.up", equalTo(15L))
-                .body("votes.down", equalTo(2L))
-                .body("voted", equalTo(true));
+                .body("[0].postingID", equalTo("postingUUID6"))
+                .body("[0].userID", equalTo("user1"))
+                .body("[0].date", equalTo("2012-09-17T16:47:52Z"))
+                .body("[0].title", equalTo("Posting 6 title"))
+                .body("[0].text", equalTo("Posting text 6"))
+                .body("[0].votes.up", equalTo(0))
+                .body("[0].votes.down", equalTo(0))
+                .body("[0].voted", equalTo(false));
     }
 
 }

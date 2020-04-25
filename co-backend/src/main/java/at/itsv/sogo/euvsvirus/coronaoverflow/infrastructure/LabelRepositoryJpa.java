@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 
 @ApplicationScoped
-public class LabelRepositoryImpl implements LabelRepository {
+public class LabelRepositoryJpa implements LabelRepository {
 
     @Inject
     LabelDbEntityTranslator labelTranslator;

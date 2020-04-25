@@ -7,8 +7,7 @@ public class PostingDto {
     private String date;
     private String title;
     private String text;
-    private VotesDto votes;
-    private boolean voted;
+    private VotesDto votings;
 
     public String getPostingID() {
         return postingID;
@@ -30,13 +29,10 @@ public class PostingDto {
         return text;
     }
 
-    public VotesDto getVotes() {
-        return votes;
+    public VotesDto getVotings() {
+        return votings;
     }
 
-    public boolean isVoted() {
-        return voted;
-    }
 
     public static final class PostingDtoBuilder {
         private String postingID;
@@ -44,7 +40,7 @@ public class PostingDto {
         private String date;
         private String title;
         private String text;
-        private VotesDto votes;
+        private VotesDto votings;
 
         private PostingDtoBuilder() {
         }
@@ -79,7 +75,7 @@ public class PostingDto {
         }
 
         public PostingDtoBuilder withVotes(VotesDto votes ){
-            this.votes = votes;
+            this.votings = votes;
             return this;
         }
 
@@ -90,7 +86,7 @@ public class PostingDto {
             postingDto.date = this.date;
             postingDto.text = this.text;
             postingDto.postingID = this.postingID;
-            postingDto.votes = this.votes;
+            postingDto.votings = this.votings;
             return postingDto;
         }
     }

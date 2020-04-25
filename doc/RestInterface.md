@@ -4,6 +4,12 @@ user id in http header X-CO-USERID
 
 # Json Structure
 url: /labels
+## Label Anlegen
+Via HTTP Header
+```
+X-CO-LABEL="<Label Text UTF8 codiert>"
+```
+
 ## Label List
 ```json
 [
@@ -18,6 +24,8 @@ url: /labels
 ```
 
 ## Posting List
+'voted' kommt nur zurück wenn der user im header X-CO-USERID übergeben wird und bereits gevoted hat. .
+
 ```json
 [
     {

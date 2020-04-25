@@ -20,7 +20,7 @@ public class Votings {
     }
 
     public Optional<ErrorMessage> addVote(Vote vote) {
-        // TODO: check invariant => No double voting, define if we throw error or replace an already existing vote?
+        votes.removeIf( v -> v.user().equals( vote.user() ));
         votes.add( vote );
         return Optional.empty();
     }
@@ -31,5 +31,16 @@ public class Votings {
 
     public List<Vote> votes() {
         return Collections.unmodifiableList(votes);
+    }
+
+    public long amountUp() {
+        return votes.stream().filter(Vote::isUp).count();
+    }
+    public long amountDown() {
+        return votes.stream().filter(Vote::isDown).count();
+    }
+
+    public Optional<Vote> voteForUser(UserId userId) {
+        return votes.stream().filter( v -> userId.equals( v.user() )).findFirst();
     }
 }

@@ -29,7 +29,7 @@ url: /labels
             "voted": "up",
             "links": [
               { "action": "voteUp", "method": "PUT", "url": "/posting/postingId/voteUp" },
-              { "action": "voteUp", "method": "PUT", "url": "/posting/postingId/voteDown" }
+              { "action": "voteDown", "method": "PUT", "url": "/posting/postingId/voteDown" }
             ]}  
     }
 ]

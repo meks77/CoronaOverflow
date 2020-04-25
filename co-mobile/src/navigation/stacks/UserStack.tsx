@@ -1,6 +1,6 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
-import {HeaderOptionsWithTitle} from '../header/HeaderOptions';
+import {HeaderOptionsNoTitle, HeaderOptionsWithTitle} from '../header/HeaderOptions';
 import {UserScreen} from "../../features/user/UserScreen";
 
 const Stack = createStackNavigator();
@@ -11,7 +11,7 @@ export default function UserStack() {
             <Stack.Screen
                 name="User"
                 component={UserScreen}
-                options={HeaderOptionsWithTitle('User')}
+                options={HeaderOptionsNoTitle}
             />
         </Stack.Navigator>
     );

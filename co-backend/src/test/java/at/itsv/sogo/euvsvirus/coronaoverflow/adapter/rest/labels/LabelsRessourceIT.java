@@ -8,7 +8,7 @@ import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.CoreMatchers.equalTo;
 
 @QuarkusTest
-class LabelRessourceIT {
+class LabelsRessourceIT {
 
     @Test
     void testLabelsEndpoint() {

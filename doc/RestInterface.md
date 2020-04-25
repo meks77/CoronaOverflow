@@ -18,6 +18,8 @@ url: /labels
 ```
 
 ## Posting List
+'voted' kommt nur zurück wenn der user im header X-CO-USERID übergeben wird und bereits gevoted hat. .
+
 ```json
 [
     {

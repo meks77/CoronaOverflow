@@ -12,8 +12,8 @@ public class PostingTranslator {
 
     PostingDto translate(Posting posting) {
         return PostingDto.PostingDtoBuilder.aPostingDto()
-                .withPostingID(posting.id().asLink())
-                .withUserID(posting.userId().asLink())
+                .withPostingID(posting.id().val())
+                .withUserID(posting.userId().val())
                 .withTitle(posting.title().text())
                 .withText(posting.text().text())
                 .withDate(ZonedDateTime.ofInstant(posting.created().timestamp().toInstant(), ZoneId.of("UTC"))

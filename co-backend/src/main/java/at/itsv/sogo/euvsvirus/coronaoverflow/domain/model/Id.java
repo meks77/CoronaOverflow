@@ -11,7 +11,7 @@ public abstract class Id {
         this.uuid = uuid;
     }
 
-    public String asLink() {
+    public String val() {
         return uuid;
     }
 

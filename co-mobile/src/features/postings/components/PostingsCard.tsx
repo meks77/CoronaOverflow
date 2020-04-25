@@ -12,63 +12,6 @@ interface Props {
 }
 
 export class PostingsCard extends React.Component<Props> {
-
-    // state = {
-    //     upVoted: false,
-    //     downVoted: false
-    // }
-    //
-    // componentDidMount = () => {
-    //     this.setState({
-    //         upVoted: this.isVoted("up", this.props.item.voted),
-    //         downVoted: this.isVoted("up", this.props.item.voted)
-    //     })
-    // }
-    //
-    // isVoted = (button: string, voted: any) => {
-    //     let isVoted = false;
-    //     if (voted !== null) {
-    //         isVoted = voted === button;
-    //     }
-    //     return isVoted;
-    // }
-    //
-    // voteButtonPressed = (button: string) => {
-    //     if (button === "up") {
-    //         if (this.state.upVoted === false) {
-    //             this.setState({
-    //                 upVoted: true,
-    //                 downVoted: false
-    //             })
-    //             this.sendVote("up");
-    //         } else {
-    //             this.setState({
-    //                 upVoted: false,
-    //                 downVoted: false
-    //             })
-    //             this.sendVote(null);
-    //         }
-    //     } else {
-    //         if (this.state.downVoted === false) {
-    //             this.setState({
-    //                 upVoted: false,
-    //                 downVoted: true
-    //             })
-    //             this.sendVote("down");
-    //         } else {
-    //             this.setState({
-    //                 upVoted: false,
-    //                 downVoted: false
-    //             })
-    //             this.sendVote(null);
-    //         }
-    //     }
-    // }
-    //
-    // vote = (vote: any) => {
-    //     //if (this.props.voted === "down")
-    // }
-
     render() {
         return (
             <Card key={this.props.key}>
@@ -81,7 +24,7 @@ export class PostingsCard extends React.Component<Props> {
                     />
                     <View style={{justifyContent:"center"}}>
                         <Text style={{fontSize: 25, color: colors.dark_grey, marginLeft: 5}}>
-                            {this.props.item.username}
+                            {this.props.item.userID}
                         </Text>
                         <Text style={{fontSize: 15, marginLeft: 5, marginTop: 2, color: colors.dark_grey}}>
                             {Moment(this.props.item.date).format('DD.MM.YYYY HH:mm')}
@@ -95,21 +38,20 @@ export class PostingsCard extends React.Component<Props> {
                 <Text style={{marginBottom: 30, color: colors.dark_grey}}>
                     {this.props.item.text}
                 </Text>
-                <View style={{flexDirection: "row", marginBottom: 10}}>
+                <View style={{flexDirection: "row"}}>
                     <Button
                         icon={
                             <Icon
                                 name="arrow-up"
                                 type="evilicon"
-                                color={this.props.item.voted === "up" ? colors.primary_light_green : colors.dark_grey}
+                                color={this.props.item.votings.voted && (this.props.item.votings.voted === "up") ? colors.primary_light_green : colors.dark_grey}
                                 size={35}
                             />
                         }
-                        title={"" + this.props.item.votes.up}
-                        buttonStyle={{backgroundColor: colors.primary_white}}
+                        title={"" + this.props.item.votings.up}
+                        buttonStyle={{backgroundColor: colors.primary_white, width: 75}}
                         titleStyle={{color: colors.dark_grey, fontSize: 20}}
                         onPress={() => {
-                            //this.voteButtonPressed("up")
                             this.props.onVote("up");
                         }}
                     />
@@ -118,15 +60,14 @@ export class PostingsCard extends React.Component<Props> {
                             <Icon
                                 name="arrow-down"
                                 type="evilicon"
-                                color={this.props.item.voted === "down" ? colors.primary_light_green : colors.dark_grey}
+                                color={this.props.item.votings.voted && (this.props.item.votings.voted === "down") ? colors.primary_light_green : colors.dark_grey}
                                 size={35}
                             />
                         }
-                        title={"" + this.props.item.votes.down}
-                        buttonStyle={{backgroundColor: colors.primary_white, marginLeft: 20}}
+                        title={"" + this.props.item.votings.down}
+                        buttonStyle={{backgroundColor: colors.primary_white, marginLeft: 20, width: 75}}
                         titleStyle={{color: colors.dark_grey, fontSize: 20}}
                         onPress={() => {
-                            //this.voteButtonPressed("down")
                             this.props.onVote("down");
                         }}
                     />

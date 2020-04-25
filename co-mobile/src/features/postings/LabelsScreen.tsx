@@ -78,7 +78,7 @@ export class LabelsScreen extends React.Component <Props> {
                                 }}
                             />
                             <Button
-                                title={"Add label"}
+                                title={"ADD LABEL"}
                                 titleStyle={{color: colors.primary_light_green, textAlign:"center", justifyContent: "center"}}
                                 buttonStyle={{marginTop: 40, backgroundColor: colors.primary_white, borderWidth: 2, borderColor: colors.primary_light_green, borderRadius: 500, alignItems: "center", paddingHorizontal:50, justifyContent: "center"}}
                                 onPress={() => {this.onAddLabelPressed(this.state.newLabelValue)}} />

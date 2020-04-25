@@ -1,4 +1,4 @@
-package at.itsv.sogo.euvsvirus.coronaoverflow.adapter.rest.label;
+package at.itsv.sogo.euvsvirus.coronaoverflow.adapter.rest.labels;
 
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.repos.LabelRepository;
 
@@ -11,7 +11,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Path("/labels")
-public class LabelRessource {
+@Produces(MediaType.APPLICATION_JSON)
+public class LabelsRessource {
 
     @Inject
     LabelRepository labelRepo;
@@ -20,8 +21,7 @@ public class LabelRessource {
     LabelTranslator labelTranslator;
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<LabelInfo> hello() {
+    public List<LabelDto> getAllLabels() {
         return labelRepo.getAllLables().stream().map(labelTranslator::from).collect(Collectors.toList());
     }
 

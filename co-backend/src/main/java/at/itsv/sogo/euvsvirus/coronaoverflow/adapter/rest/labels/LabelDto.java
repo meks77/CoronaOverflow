@@ -1,11 +1,13 @@
-package at.itsv.sogo.euvsvirus.coronaoverflow.adapter.rest.label;
+package at.itsv.sogo.euvsvirus.coronaoverflow.adapter.rest.labels;
 
-public class LabelInfo {
+import at.itsv.sogo.euvsvirus.coronaoverflow.adapter.rest.Link;
+
+public class LabelDto {
 
     private final String label;
     private final Link link;
 
-    LabelInfo(String label, Link link) {
+    LabelDto(String label, Link link) {
         this.label = label;
         this.link = link;
     }

@@ -10,6 +10,9 @@ import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting.PostingText;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.user.UserId;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.service.postings.PostingRepository;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.service.votings.VotingsRepository;
+import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
+import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -41,6 +44,7 @@ public class PostingsResource {
     @GET
     @Path("/forLabel/{label}")
     @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "get all posting of one label")
     public List<PostingDto> getPosting(@PathParam("label") String label, @HeaderParam("X-CO-USERID") String userId) {
         Comparator<PostingDto> byRanking = Comparator.comparingDouble(c -> c.getVotings().getRanking());
 
@@ -52,9 +56,16 @@ public class PostingsResource {
                 .collect(Collectors.toList());
     }
 
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public void createPosting(@HeaderParam("X-CO-USERID") String userId, NewPostingDto posting) {
+    @Operation(summary = "create a new posting")
+    public void createPosting(
+            @Parameter(required = true, description = "the id of the user")
+            @HeaderParam("X-CO-USERID")
+                    String userId,
+            @RequestBody(required = true, description = "the values of the new post" )
+                    NewPostingDto posting) {
         final Posting newPosting = Posting.createNew(
                 new CreatePostingCmd(new UserId(userId), new Title(posting.getTitle()),
                         new LabelId(posting.getLabel()), new PostingText(posting.getText())));

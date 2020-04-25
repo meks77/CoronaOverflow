@@ -1,5 +1,7 @@
 package at.itsv.sogo.euvsvirus.coronaoverflow.adapter.rest.postings;
 
+import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting.Votes;
+
 public class PostingDto {
 
     private String postingID;
@@ -7,8 +9,7 @@ public class PostingDto {
     private String date;
     private String title;
     private String text;
-    private VotesDto votes;
-    private boolean voted;
+    private VotesDto votings;
 
     public String getPostingID() {
         return postingID;
@@ -30,13 +31,10 @@ public class PostingDto {
         return text;
     }
 
-    public VotesDto getVotes() {
-        return votes;
+    public VotesDto getVotings() {
+        return votings;
     }
 
-    public boolean isVoted() {
-        return voted;
-    }
 
     public static final class PostingDtoBuilder {
         private String postingID;
@@ -44,8 +42,7 @@ public class PostingDto {
         private String date;
         private String title;
         private String text;
-        private VotesDto votes;
-        private boolean voted;
+        private VotesDto votings;
 
         private PostingDtoBuilder() {
         }
@@ -79,13 +76,8 @@ public class PostingDto {
             return this;
         }
 
-        public PostingDtoBuilder withVotes(VotesDto votes) {
-            this.votes = votes;
-            return this;
-        }
-
-        public PostingDtoBuilder withVoted(boolean voted) {
-            this.voted = voted;
+        public PostingDtoBuilder withVotes(VotesDto votes ){
+            this.votings = votes;
             return this;
         }
 
@@ -93,11 +85,10 @@ public class PostingDto {
             PostingDto postingDto = new PostingDto();
             postingDto.userID = this.userID;
             postingDto.title = this.title;
-            postingDto.voted = this.voted;
             postingDto.date = this.date;
             postingDto.text = this.text;
-            postingDto.votes = this.votes;
             postingDto.postingID = this.postingID;
+            postingDto.votings = this.votings;
             return postingDto;
         }
     }

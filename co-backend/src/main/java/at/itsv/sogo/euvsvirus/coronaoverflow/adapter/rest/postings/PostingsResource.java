@@ -2,15 +2,15 @@ package at.itsv.sogo.euvsvirus.coronaoverflow.adapter.rest.postings;
 
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.label.Label;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.label.Name;
+import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.user.UserId;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.service.postings.PostingRepository;
+import at.itsv.sogo.euvsvirus.coronaoverflow.domain.service.votings.VotingsRepository;
 
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Path("/postings")
@@ -21,15 +21,18 @@ public class PostingsResource {
     PostingRepository postingRepo;
 
     @Inject
+    VotingsRepository votingsRepo;
+
+    @Inject
     PostingTranslator postingTranslator;
 
     @GET
     @Path("/forLabel/{label}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<PostingDto> getPosting(@PathParam("label") String label) {
+    public List<PostingDto> getPosting(@PathParam("label") String label, @HeaderParam("X-CO-USERID") String userId) {
         return postingRepo.findAllByLabel(new Label(new Name(label)))
                 .stream()
-                .map(postingTranslator::translate)
+                .map( posting -> postingTranslator.translate(posting, votingsRepo.loadVotings( posting.id() ), Optional.ofNullable( userId).map( UserId::new)))
                 .collect(Collectors.toList());
     }
 

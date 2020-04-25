@@ -1,4 +1,6 @@
 # Url
+# Http Header fields:
+user id in http header X-CO-USERID
 
 # Json Structure
 url: /labels
@@ -16,6 +18,8 @@ url: /labels
 ```
 
 ## Posting List
+'voted' kommt nur zurück wenn der user im header X-CO-USERID übergeben wird und bereits gevoted hat. .
+
 ```json
 [
     {
@@ -28,8 +32,8 @@ url: /labels
             "down": 4545,
             "voted": "up",
             "links": [
-              { "action": "voteUp", "method": "PUT", "url": "/posting/postingId/voteUp" },
-              { "action": "voteDown", "method": "PUT", "url": "/posting/postingId/voteDown" }
+              { "action": "voteUp", "method": "PUT", "url": "/voting/postingId/voteUp" },
+              { "action": "voteDown", "method": "PUT", "url": "/voting/postingId/voteDown" }
             ]}  
     }
 ]

@@ -27,25 +27,4 @@ class LabelRessourceIT {
                 .body("[2].link.url", equalTo("/postings/forLabel/LabelZ"));
     }
 
-    @Test
-    void testLabelPostingsEndpoint() {
-        String postingsUrl = given()
-                .when().get("/labels")
-                .then()
-                .statusCode(200)
-                .extract().body().path("[2].link.url");
-        given()
-                .when().get(postingsUrl)
-                .then()
-                .statusCode(SC_OK)
-                .body("postingID", equalTo(11L))
-                .body("userID", equalTo(25L))
-                .body("date", equalTo("2020-04-24T17:18:27.600Z"))
-                .body("title", equalTo("Posting Title of Posting 1 Label Z"))
-                .body("text", equalTo("Posting Text of Posting 1 Label Z"))
-                .body("votes.up", equalTo(15L))
-                .body("votes.down", equalTo(2L))
-                .body("voted", equalTo(true));
-    }
-
 }

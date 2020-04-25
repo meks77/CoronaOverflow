@@ -15,4 +15,16 @@ public abstract class Id {
         return uuid;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Id)) return false;
+        Id id = (Id) o;
+        return Objects.equals(uuid, id.uuid);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(uuid);
+    }
 }

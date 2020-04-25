@@ -5,6 +5,7 @@ import at.itsv.sogo.euvsvirus.coronaoverflow.domain.service.label.LabelRepositor
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
@@ -23,6 +24,7 @@ public class LabelRepositoryJpa implements LabelRepository {
     }
 
     @Override
+    @Transactional
     public void create(String labelText) {
         if(LabelDbEntity.findByName( labelText ).isPresent() ) {
             return;

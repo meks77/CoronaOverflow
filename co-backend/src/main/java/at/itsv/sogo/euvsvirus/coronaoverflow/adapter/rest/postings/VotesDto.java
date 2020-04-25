@@ -10,12 +10,14 @@ public class VotesDto {
     private final long down;
     private final String voted;
     private final List<Link> links;
+    private final double ranking;
 
-    public VotesDto(long up, long down, String votedByUser, List<Link> links) {
+    public VotesDto(long up, long down, String votedByUser, List<Link> links, double ranking) {
         this.up = up;
         this.down = down;
         this.voted = votedByUser;
         this.links = links;
+        this.ranking = ranking;
     }
 
     public long getUp() {
@@ -32,5 +34,9 @@ public class VotesDto {
 
     public List<Link> getLinks() {
         return links;
+    }
+
+    public double getRanking() {
+        return ranking;
     }
 }

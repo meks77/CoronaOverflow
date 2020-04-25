@@ -9,6 +9,7 @@ import at.itsv.sogo.euvsvirus.coronaoverflow.domain.service.votings.VotingsRepos
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -33,6 +34,7 @@ public class PostingsResource {
         return postingRepo.findAllByLabel(new Label(new Name(label)))
                 .stream()
                 .map( posting -> postingTranslator.translate(posting, votingsRepo.loadVotings( posting.id() ), Optional.ofNullable( userId).map( UserId::new)))
+                .sorted(Comparator.comparingDouble( c -> c.getVotings().getRanking() ))
                 .collect(Collectors.toList());
     }
 

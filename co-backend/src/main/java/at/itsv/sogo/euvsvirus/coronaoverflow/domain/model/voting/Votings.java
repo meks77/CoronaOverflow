@@ -37,11 +37,25 @@ public class Votings {
     public long amountUp() {
         return votes.stream().filter(Vote::isUp).count();
     }
+
     public long amountDown() {
         return votes.stream().filter(Vote::isDown).count();
     }
 
     public Optional<Vote> voteForUser(UserId userId) {
         return votes.stream().filter( v -> userId.equals( v.user() )).findFirst();
+    }
+
+    public double rating(){
+        if ( votes.isEmpty() ){
+            return 0;
+        }
+        double amountUp = amountUp();
+        double amountDown = amountDown();
+
+        double sum = amountUp + amountDown ;
+
+        double rating = Math.sqrt( sum ) * amountUp / sum;
+        return rating;
     }
 }

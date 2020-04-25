@@ -28,3 +28,8 @@ Or, if you don't have GraalVM installed, you can run the native executable build
 You can then execute your native executable with: `./target/coronaflow-backend-1.0-SNAPSHOT-runner`
 
 If you want to learn more about building native executables, please consult https://quarkus.io/guides/building-native-image.
+
+## REST Interfaces
+
+We have included openapi, so you'll find the REST interfaces under e.g. http://localhost:8080/openapi 
+If you are running in dev mode, http://localhost:8080/swagger-ui displays a graphical interface 

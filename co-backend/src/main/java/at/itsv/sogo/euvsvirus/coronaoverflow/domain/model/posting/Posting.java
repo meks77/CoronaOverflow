@@ -28,6 +28,8 @@ public class Posting {
         votes = new Votes();
     }
 
+
+
     public Id id() {
         return id;
     }

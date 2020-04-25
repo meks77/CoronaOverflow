@@ -33,7 +33,7 @@ url: /labels
 ## Post
 ```json
 {
-    "userID": 0,
+    "user": { "displayName":  "steve.jobs" },
     "date": "2020-04-24T17:18:27.600Z",
     "title": "string",
     "text": "string",

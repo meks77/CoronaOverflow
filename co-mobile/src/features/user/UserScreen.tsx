@@ -4,6 +4,7 @@ import {Button, Icon, Input, Text} from 'react-native-elements';
 import {colors} from '../../styles/Colors';
 import {UserDetailListItem} from "./components/UserDetailListItem";
 import {Constants} from "../../services/Constants";
+import {getUsername, setUsername} from "../../data/Username";
 
 export class UserScreen extends React.Component {
 
@@ -13,20 +14,20 @@ export class UserScreen extends React.Component {
     }
 
     componentDidMount = () => {
-        AsyncStorage.getItem(Constants.KEY_USERID)
+        getUsername()
             .then((userID) => {
                 this.setState({userID: userID})
             })
     }
 
-    onSaveUsername = (userID: string) => {
+    onSaveUsername = (id: string) => {
         try {
-            AsyncStorage.setItem(Constants.KEY_USERID, userID)
+            setUsername(id)
                 .then(() => {
-                    AsyncStorage.getItem(Constants.KEY_USERID)
+                    getUsername()
                         .then((userID) => {
                             this.setState({userID: userID})
-                        });
+                        })
                 });
         } catch (error) {
             console.log(error)
@@ -44,16 +45,15 @@ export class UserScreen extends React.Component {
                         size={150}
                     />
                     <Text style={{fontSize: 30, color: colors.dark_grey, marginTop: 10, marginBottom: 40}}>
-                        {this.state.userID ? this.state.userID : "NO_USERID"}
+                        {this.state.userID}
                     </Text>
                     <UserDetailListItem title={"Name"} subtitle={"Max Mustermann"}/>
                     <UserDetailListItem title={"Email"} subtitle={"max.mustermann@example.com"}/>
 
                     <View style={{width: "100%", backgroundColor: colors.primary_white, paddingHorizontal: 5, paddingVertical:20, marginTop: 30, marginBottom: 50}}>
                     <Input
-                        containerStyle={{}}
                         label={"Enter new username"}
-                        labelStyle={{color: colors.dark_grey}}
+                        labelStyle={{color: colors.dark_grey, fontWeight: "normal"}}
                         placeholder="Example: max.mustermann"
                         value={this.state.newUserID}
                         onChangeText={(value) => {

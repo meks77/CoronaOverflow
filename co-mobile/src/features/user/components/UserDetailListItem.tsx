@@ -16,8 +16,8 @@ export class UserDetailListItem extends React.Component<Props> {
                     backgroundColor: colors.primary_white,
                     width: '100%'
                 }}
-                titleStyle={{color: colors.dark_grey, fontSize: 14, marginBottom: 3}}
-                subtitleStyle={{color: colors.dark_grey, fontSize: 17}}
+                titleStyle={{color: colors.dark_grey, fontSize: 15, marginBottom: 3}}
+                subtitleStyle={{color: colors.dark_grey, fontSize: 18}}
                 subtitle={this.props.subtitle}
                 bottomDivider
             />

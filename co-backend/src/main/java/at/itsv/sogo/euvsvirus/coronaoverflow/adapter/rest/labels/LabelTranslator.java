@@ -5,12 +5,18 @@ import at.itsv.sogo.euvsvirus.coronaoverflow.adapter.rest.Method;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.label.Label;
 
 import javax.enterprise.context.ApplicationScoped;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 @ApplicationScoped
 class LabelTranslator {
 
     LabelDto from(Label label) {
-        return new LabelDto(label.name().text(),
-                new Link("view", "/postings/forLabel/" + label.name().text(), Method.GET));
+        try {
+            return new LabelDto(label.name().text(),
+                    new Link("view", "/postings/forLabel/" + URLEncoder.encode(label.name().text(), "UTF-8"), Method.GET));
+        } catch (UnsupportedEncodingException e) {
+            throw new IllegalStateException( e );
+        }
     }
 }

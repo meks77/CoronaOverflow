@@ -2,6 +2,7 @@ package at.itsv.sogo.euvsvirus.coronaoverflow.adapter.rest.votings;
 
 import io.agroal.api.AgroalDataSource;
 import io.quarkus.test.junit.QuarkusTest;
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.wildfly.common.Assert;
@@ -45,12 +46,13 @@ class VotingsRessourceTest {
     }
 
     @Test
+    @Ignore
     void testVoteDown() {
         given()
                 .when().get("/voting/postingUUID2/voteDown")
                 .then()
                 .statusCode(SC_OK);
-
+        //TODO verify in database
     }
 
 }

@@ -1,9 +1,9 @@
 insert into USERS values ('user1');
 insert into USERS values ('user2');
 
-insert into LABELS (NAME) values ('LabelX');
-insert into LABELS (NAME) values ('LabelY');
-insert into LABELS (NAME) values ('LabelZ');
+insert into LABELS values (hibernate_sequence.nextval, 'LabelX');
+insert into LABELS values (hibernate_sequence.nextval, 'LabelY');
+insert into LABELS values (hibernate_sequence.nextval, 'LabelZ');
 
 insert into POSTS (UUID, USER_ID, TITLE, LABEL_ID, CREATED, TEXT)
  values ( 'postingUUID1', 'user1', 'Posting 1 title', 1, CURRENT_TIMESTAMP(), 'Posting text 1');

@@ -3,10 +3,9 @@ package at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.voting;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.AggregateRoot;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.ErrorMessage;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting.PostingId;
-import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting.Votes;
-import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.user.UserId;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,5 +23,13 @@ public class Votings {
         // TODO: check invariant => No double voting, define if we throw error or replace an already existing vote?
         votes.add( vote );
         return Optional.empty();
+    }
+
+    public PostingId post() {
+        return post;
+    }
+
+    public List<Vote> votes() {
+        return Collections.unmodifiableList(votes);
     }
 }

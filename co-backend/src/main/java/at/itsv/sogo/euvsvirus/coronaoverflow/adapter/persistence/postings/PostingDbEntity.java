@@ -1,10 +1,11 @@
 package at.itsv.sogo.euvsvirus.coronaoverflow.adapter.persistence.postings;
 
 import at.itsv.sogo.euvsvirus.coronaoverflow.adapter.persistence.labels.LabelDbEntity;
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -13,8 +14,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "POSTS")
-public class PostingDbEntity extends PanacheEntity {
+public class PostingDbEntity extends PanacheEntityBase {
 
+    @Id
     public String uuid;
 
     @Column(name = "user_id")

@@ -21,9 +21,9 @@ public class LabelsRessource {
     LabelTranslator labelTranslator;
 
     @POST
-    public Response createLabel(@HeaderParam("X-CO-LABEL") String labelText ){
+    public List<LabelDto> createLabel(@HeaderParam("X-CO-LABEL") String labelText ){
         labelRepo.create( labelText );
-        return Response.ok().build();
+        return getAllLabels();
     }
 
     @GET

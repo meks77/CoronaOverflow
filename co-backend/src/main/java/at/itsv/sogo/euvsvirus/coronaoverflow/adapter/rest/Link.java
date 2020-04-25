@@ -1,8 +1,11 @@
 package at.itsv.sogo.euvsvirus.coronaoverflow.adapter.rest;
 
+import javax.ws.rs.Encoded;
+
 public class Link {
 
     private final String action;
+    @Encoded
     private final String url;
     private final Method method;
 

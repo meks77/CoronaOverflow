@@ -7,7 +7,6 @@ import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.voting.UpVote;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.voting.Vote;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.voting.Votings;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.service.votings.VotingsRepository;
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
@@ -39,10 +38,6 @@ public class VotingsRepositoryJpa implements VotingsRepository {
                 votings.post().val());
 
         votings.votes().forEach(vote -> saveOrUpdate(vote, dbVotings, votings.post()));
-        dbVotings.stream()
-                .filter(dbVote -> votings.votes().stream()
-                        .anyMatch(vote -> vote.user().val().equals(dbVote.userId)))
-                .forEach(PanacheEntityBase::delete);
     }
 
     private void saveOrUpdate(Vote vote, List<VotingsDbEntity> dbVotings, PostingId post) {

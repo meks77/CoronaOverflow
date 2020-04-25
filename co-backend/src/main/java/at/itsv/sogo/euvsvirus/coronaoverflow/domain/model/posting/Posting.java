@@ -2,7 +2,6 @@ package at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting;
 
 
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.AggregateRoot;
-import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.Id;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.label.LabelId;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.label.Title;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.user.UserId;
@@ -35,6 +34,11 @@ public class Posting {
         posting.created = props.getCreated();
         posting.text = props.getText();
         return posting;
+    }
+
+    public static Posting createNew(CreatePostingCmd cmd) {
+        Objects.requireNonNull(cmd, "cmd");
+        return create(cmd.getPostingProperties());
     }
 
     private Posting() {

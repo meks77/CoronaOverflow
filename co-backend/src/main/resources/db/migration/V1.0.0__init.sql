@@ -34,3 +34,5 @@ create table VOTINGS (
 );
 
 create index VOTINGS_UK on VOTINGS (USER_ID, POST_ID);
+create index VOTINGS_POSTS_IXF on VOTINGS (POST_ID);
+

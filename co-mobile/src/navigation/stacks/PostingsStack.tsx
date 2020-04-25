@@ -12,7 +12,7 @@ export default function PostingsStack() {
             <Stack.Screen
                 name="Labels"
                 component={LabelsScreen}
-                options={HeaderOptionsNoTitle}
+                options={HeaderOptionsWithTitle('')}
             />
             <Stack.Screen
                 name="Postings"

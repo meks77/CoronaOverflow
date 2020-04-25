@@ -1,12 +1,12 @@
 import React from 'react';
-import {ScrollView, View} from 'react-native';
-import {Card, Divider, Icon, ListItem, Text} from 'react-native-elements';
+import {ScrollView, TouchableOpacity, View} from 'react-native';
 import {NavigationStackProp} from 'react-navigation-stack';
 import {colors} from '../../styles/Colors';
 import {Label} from "./interfaces/Label";
 import {Posting} from "./interfaces/Posting";
 import {PostingsCard} from "./components/PostingsCard";
-
+import {fetchData} from "../../services/rest/FetchData";
+import {Button, Icon, Input, Overlay, Text} from "react-native-elements";
 
 interface Props {
     navigation: NavigationStackProp<{label: Label}>;
@@ -16,14 +16,45 @@ interface Props {
 export class PostingsScreen extends React.Component<Props> {
 
     state = {
+        overlayVisible: false,
         postingsList: [],
+        newPostingTitle: "",
+        newPostingMessage: ""
     }
 
     componentDidMount = () => {
         const label: Label = this.props.route.params.label;
-        this.props.navigation.setOptions({ title: label.label });
+        this.props.navigation.setOptions({ title: label.label,
+            headerRight: () => (
+                <TouchableOpacity style={{marginRight: 10}} onPress={() => this.setState({overlayVisible: true})}>
+                    <Icon
+                        name="add"
+                        type="material"
+                        color={colors.dark_grey}
+                        size={35}
+                    />
+                </TouchableOpacity>
+            )});
+        fetchData(label.link.url, label.link.method)
+            .then((result: any) => {
+                console.log(result);
+                //this.setState({labelsList: result});
+            })
+            .catch((error:any) => {
+                console.log(error);
+            });
+
         const postingsList = require("../../data/Postings")
         this.setState({postingsList: postingsList});
+    }
+
+    onAddPosting = () => {
+        console.log("Add new posting pressed")
+    }
+
+    sendVote = (item: Posting, vote: string) => {
+        vote = this.checkVote(item, vote);
+        this.updateVote(item, vote);
     }
 
     checkVote = (item: Posting, vote: string): string =>    {
@@ -45,11 +76,26 @@ export class PostingsScreen extends React.Component<Props> {
         return vote
     }
 
-    sendVote = (item: Posting, vote: string) => {
-        vote = this.checkVote(item, vote);
-        console.log(vote)
+    updateVote = (item: Posting, vote: string) => {
         const list = this.state.postingsList;
         const newItem = item;
+        if (vote === "") {
+            if (item.voted === "up") {
+                newItem.votes.up = newItem.votes.up - 1;
+            } else if (item.voted === "down") {
+                newItem.votes.down = newItem.votes.down - 1;
+            }
+        } else if (vote === "up"){
+            if (item.voted === "down") {
+                newItem.votes.down = newItem.votes.down - 1;
+            }
+            newItem.votes.up = newItem.votes.up + 1;
+        } else if (vote === "down") {
+            if (item.voted === "up") {
+                newItem.votes.up = newItem.votes.up - 1;
+            }
+            newItem.votes.down = newItem.votes.down + 1;
+        }
         newItem.voted = vote;
         const indexOfItem = list.indexOf(item as never);
         list[indexOfItem] = newItem;
@@ -59,6 +105,39 @@ export class PostingsScreen extends React.Component<Props> {
     render() {
         return (
             <ScrollView style={{flex: 1, backgroundColor: colors.light_grey}}>
+                <Overlay isVisible={this.state.overlayVisible}>
+                    <View style={{flex: 1}}>
+                        <View style={{width: "100%", alignItems: "flex-end"}}>
+                            <TouchableOpacity style={{}} onPress={() => this.setState({overlayVisible: false})}>
+                                <Icon
+                                    name="close"
+                                    type="material"
+                                    color={colors.dark_grey}
+                                    size={35}
+                                />
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{flex: 1, justifyContent: "center", alignItems: "center", padding: 10}}>
+                            <Text h4 h4Style={{color: colors.dark_grey}}>{"Add a new label"}</Text>
+                            <Text style={{color: colors.dark_grey, marginTop: 20}}>{"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut."}</Text>
+                            <Input
+                                containerStyle={{marginTop: 30}}
+                                label={"Name of your label"}
+                                placeholder='Example: #experiences'
+                                value={this.state.newPostingMessage}
+                                onChangeText={(value) => {
+                                    console.log(value);
+                                    this.setState({newLabelValue: value});
+                                }}
+                            />
+                            <Button
+                                title={"Add label"}
+                                titleStyle={{color: colors.primary_light_green, textAlign:"center", justifyContent: "center"}}
+                                buttonStyle={{marginTop: 40, backgroundColor: colors.primary_white, borderWidth: 2, borderColor: colors.primary_light_green, borderRadius: 500, alignItems: "center", paddingHorizontal:50, justifyContent: "center"}}
+                                onPress={() => {console.log("")}} />
+                        </View>
+                    </View>
+                </Overlay>
                 <View style={{paddingBottom:25}}>
                 {this.state.postingsList.map((item: Posting, i: number) => (
                     <PostingsCard

@@ -2,17 +2,12 @@ package at.itsv.sogo.euvsvirus.coronaoverflow.adapter.rest.votings;
 
 import io.agroal.api.AgroalDataSource;
 import io.quarkus.test.junit.QuarkusTest;
-import jdk.nashorn.internal.ir.annotations.Ignore;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.wildfly.common.Assert;
 
 import javax.inject.Inject;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import static io.restassured.RestAssured.given;
 import static org.apache.http.HttpStatus.SC_OK;
@@ -45,8 +40,7 @@ class VotingsRessourceTest {
         }
     }
 
-    @Test
-    @Ignore
+//    @Test
     void testVoteDown() {
         given()
                 .when().get("/voting/postingUUID2/voteDown")

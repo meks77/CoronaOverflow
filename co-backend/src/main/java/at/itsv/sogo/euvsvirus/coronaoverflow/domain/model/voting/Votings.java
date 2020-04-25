@@ -3,6 +3,7 @@ package at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.voting;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.AggregateRoot;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.ErrorMessage;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting.PostingId;
+import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.user.UserId;
 
 import java.util.ArrayList;
 import java.util.Collections;

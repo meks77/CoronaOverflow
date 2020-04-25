@@ -1,0 +1,56 @@
+package at.itsv.sogo.euvsvirus.coronaoverflow.adapter.rest.votings;
+
+import io.agroal.api.AgroalDataSource;
+import io.quarkus.test.junit.QuarkusTest;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.wildfly.common.Assert;
+
+import javax.inject.Inject;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import static io.restassured.RestAssured.given;
+import static org.apache.http.HttpStatus.SC_OK;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+@QuarkusTest
+class VotingsRessourceTest {
+
+    @Inject
+    AgroalDataSource dataSource;
+
+    @Test
+    void testVoteUp() throws SQLException {
+        final String postUuid = "postingUUID1";
+        final String userId = "user1";
+        given().header("X-CO-USERID", userId)
+                .when().put("/voting/" + postUuid + "/voteUp")
+                .then()
+                .statusCode(SC_OK);
+        try(PreparedStatement statement = dataSource.getConnection()
+                .prepareStatement("select v.voted FROM VOTINGS v where v.post_id = ? and v.user_id = ?")) {
+            statement.setString(1, postUuid);
+            statement.setString(2, userId);
+            ResultSet resultSet = statement.executeQuery();
+            assertTrue(resultSet.next(), "no voting found");
+            assertEquals("UP", resultSet.getString(1));
+            assertFalse(resultSet.next(), "too many votings found");
+        }
+    }
+
+    @Test
+    void testVoteDown() {
+        given()
+                .when().get("/voting/postingUUID2/voteDown")
+                .then()
+                .statusCode(SC_OK);
+
+    }
+
+}

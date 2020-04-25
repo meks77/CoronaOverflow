@@ -1,3 +1,6 @@
+insert into USERS values ('user1');
+insert into USERS values ('user2');
+
 insert into LABELS (NAME) values ('LabelX');
 insert into LABELS (NAME) values ('LabelY');
 insert into LABELS (NAME) values ('LabelZ');

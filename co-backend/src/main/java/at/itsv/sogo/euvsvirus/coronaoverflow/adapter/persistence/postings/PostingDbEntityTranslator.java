@@ -1,5 +1,6 @@
 package at.itsv.sogo.euvsvirus.coronaoverflow.adapter.persistence.postings;
 
+import at.itsv.sogo.euvsvirus.coronaoverflow.adapter.persistence.labels.LabelDbEntity;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.label.LabelId;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.label.Title;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting.Posting;
@@ -14,7 +15,7 @@ import javax.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 class PostingDbEntityTranslator {
 
-    public Posting translate(PostingDbEntity postingDbEntity) {
+    public Posting translateToDomain(PostingDbEntity postingDbEntity) {
         return Posting.create(
                 new PostingProperties(
                         new PostingId(postingDbEntity.uuid),
@@ -25,4 +26,15 @@ class PostingDbEntityTranslator {
                         new PostingText(postingDbEntity.text)));
     }
 
+    public PostingDbEntity translateToDb(Posting newPosting) {
+        final PostingDbEntity dbEntity = new PostingDbEntity();
+        dbEntity.created = newPosting.created().timestamp();
+        dbEntity.label = LabelDbEntity.findByName(newPosting.labelId().val())
+                .orElseThrow(() -> new IllegalArgumentException(String.format("label %s not found", newPosting.labelId().val())));
+        dbEntity.text = newPosting.text().text();
+        dbEntity.title = newPosting.title().text();
+        dbEntity.userId = newPosting.userId().val();
+        dbEntity.uuid = newPosting.id().val();
+        return dbEntity;
+    }
 }

@@ -8,12 +8,14 @@ import at.itsv.sogo.euvsvirus.coronaoverflow.domain.service.postings.PostingRepo
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @ApplicationScoped
+@Transactional
 public class PostingRepositoryJpa implements PostingRepository {
 
     @Inject
@@ -26,12 +28,17 @@ public class PostingRepositoryJpa implements PostingRepository {
             return Collections.emptyList();
         }
         return PostingDbEntity.findByLabel(labelDbEntity.get()).stream()
-            .map(translator::translate)
+            .map(translator::translateToDomain)
             .collect(Collectors.toList());
     }
 
     @Override
     public Optional<Posting> findBy(PostingId id) {
         return Optional.empty();
+    }
+
+    @Override
+    public void save(Posting newPosting) {
+        translator.translateToDb(newPosting).persist();
     }
 }

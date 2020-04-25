@@ -1,7 +1,5 @@
 package at.itsv.sogo.euvsvirus.coronaoverflow.adapter.rest.postings;
 
-import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting.Votes;
-
 public class PostingDto {
 
     private String postingID;

@@ -2,6 +2,8 @@ package at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.voting;
 
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.user.UserId;
 
+import java.util.Objects;
+
 public abstract class Vote {
     enum VOTE { UP, DOWN }
 
@@ -9,6 +11,8 @@ public abstract class Vote {
     private UserId user;
 
     public Vote(VOTE vote, UserId user) {
+        Objects.requireNonNull( vote );
+        Objects.requireNonNull( user );
         this.vote = vote;
         this.user = user;
     }

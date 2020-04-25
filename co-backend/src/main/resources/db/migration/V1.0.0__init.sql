@@ -1,3 +1,5 @@
+create sequence hibernate_sequence;
+
 create table LABELS
 (
     ID   IDENTITY,
@@ -6,8 +8,7 @@ create table LABELS
 
 create table POSTS
 (
-    ID         IDENTITY,
-    UUID       VARCHAR(50) UNIQUE,
+    UUID       VARCHAR(50) PRIMARY KEY,
     USER_ID    VARCHAR(50),
     TITLE      VARCHAR(200),
     LABEL_ID   NUMERIC,
@@ -28,5 +29,8 @@ create table VOTINGS (
     POST_ID VARCHAR(50),
     VOTED VARCHAR(50),
     FOREIGN KEY (USER_ID) REFERENCES USERS(ID),
-    FOREIGN KEY (POST_ID) REFERENCES POSTS(UUID)
+    FOREIGN KEY (POST_ID) REFERENCES POSTS(UUID),
+    UNIQUE (USER_ID, POST_ID)
 );
+
+create index VOTINGS_UK on VOTINGS (USER_ID, POST_ID);

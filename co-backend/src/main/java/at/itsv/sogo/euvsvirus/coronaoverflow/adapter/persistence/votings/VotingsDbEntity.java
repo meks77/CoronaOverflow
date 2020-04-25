@@ -1,32 +1,27 @@
 package at.itsv.sogo.euvsvirus.coronaoverflow.adapter.persistence.votings;
 
-import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting.PostingId;
-import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.user.UserId;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "VOTINGS")
 public class VotingsDbEntity extends PanacheEntity {
-    enum VOTE { UP, DOWN };
+    enum VOTE { UP, DOWN }
+
     @Column(name="USER_ID")
-    String userId;
+    public String userId;
 
     @Column(name="POST_ID")
-    String postingId;
+    public String postingId;
 
     @Column(name="VOTED")
     @Enumerated(EnumType.STRING)
-    VOTE voted;
-
-    public UserId user() {
-        return new UserId( userId );
-    }
-
-    public PostingId post() {
-        return new PostingId( postingId );
-    }
+    public VOTE voted;
 
     public boolean isUp() {
         return VOTE.UP.equals( voted );

@@ -7,4 +7,6 @@ import java.util.Collection;
 public interface LabelRepository {
 
     Collection<Label> getAllLables();
+
+    void create(String labelText);
 }

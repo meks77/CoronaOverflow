@@ -42,4 +42,4 @@ insert into VOTINGS (USER_ID, POST_ID, VOTED) values ( 'user5', 'postingUUID2', 
 insert into VOTINGS (USER_ID, POST_ID, VOTED) values ( 'user5', 'postingUUID3', 'DOWN');
 insert into VOTINGS (USER_ID, POST_ID, VOTED) values ( 'user6', 'postingUUID1', 'UP');
 insert into VOTINGS (USER_ID, POST_ID, VOTED) values ( 'user6', 'postingUUID2', 'DOWN');
-insert into VOTINGS (USER_ID, POST_ID, VOTED) values ( 'user6', 'postingUUID3', 'UP');
+insert into VOTINGS (USER_ID, POST_ID, VOTED) values ( 'user6', 'postingUUID3', 'DOWN');

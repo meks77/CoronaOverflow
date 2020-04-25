@@ -22,31 +22,61 @@ class VotingsRessourceTest {
     AgroalDataSource dataSource;
 
     @Test
-    void testVoteUp() throws SQLException {
-        final String postUuid = "postingUUID1";
-        final String userId = "user1";
+    void givenNoUserVoteWhenVoteUp() throws SQLException {
+        String postUuid = "postingUUID1";
+        String userId = "user3";
         given().header("X-CO-USERID", userId)
                 .when().put("/voting/" + postUuid + "/voteUp")
                 .then()
                 .statusCode(SC_OK);
-        try(PreparedStatement statement = dataSource.getConnection()
+        assertVotingInDB(postUuid, userId, "UP");
+    }
+
+    private void assertVotingInDB(String postUuid, String userId, String expectedVotingValue) throws SQLException {
+        try (PreparedStatement statement = dataSource.getConnection()
                 .prepareStatement("select v.voted FROM VOTINGS v where v.post_id = ? and v.user_id = ?")) {
             statement.setString(1, postUuid);
             statement.setString(2, userId);
             ResultSet resultSet = statement.executeQuery();
             assertTrue(resultSet.next(), "no voting found");
-            assertEquals("UP", resultSet.getString(1));
+            assertEquals(expectedVotingValue, resultSet.getString(1));
             assertFalse(resultSet.next(), "too many votings found");
         }
     }
 
-//    @Test
-    void testVoteDown() {
-        given()
-                .when().get("/voting/postingUUID2/voteDown")
+    @Test
+    void givenNoUserVoteWhenVoteDown() throws SQLException {
+        String userId = "user3";
+        String postUuid = "postingUUID2";
+        given().header("X-CO-USERID", userId)
+                .when().put("/voting/" + postUuid + "/voteDown")
                 .then()
                 .statusCode(SC_OK);
-        //TODO verify in database
+        assertVotingInDB(postUuid, userId, "DOWN");
+    }
+
+    @Test
+    void givenUserDownVoteWhenVoteUp() throws SQLException {
+        String postUuid = "postingUUID1";
+        String userId = "user2";
+
+        given().header("X-CO-USERID", userId)
+                .when().put("/voting/" + postUuid + "/voteUp")
+                .then()
+                .statusCode(SC_OK);
+        assertVotingInDB(postUuid, userId, "UP");
+    }
+
+    @Test
+    void givenUserUpVoteWhenVoteDown() throws SQLException {
+        String postUuid = "postingUUID4";
+        String userId = "user1";
+
+        given().header("X-CO-USERID", userId)
+                .when().put("/voting/" + postUuid + "/voteDown")
+                .then()
+                .statusCode(SC_OK);
+        assertVotingInDB(postUuid, userId, "DOWN");
     }
 
 }

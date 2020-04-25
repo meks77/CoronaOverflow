@@ -1,5 +1,6 @@
 insert into USERS values ('user1');
 insert into USERS values ('user2');
+insert into USERS values ('user3');
 
 insert into LABELS values (hibernate_sequence.nextval, 'LabelX');
 insert into LABELS values (hibernate_sequence.nextval, 'LabelY');

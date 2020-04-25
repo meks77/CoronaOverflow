@@ -43,9 +43,9 @@ class LabelRessourceIT {
                 .body("date", equalTo("2020-04-24T17:18:27.600Z"))
                 .body("title", equalTo("Posting Title of Posting 1 Label Z"))
                 .body("text", equalTo("Posting Text of Posting 1 Label Z"))
-                .body("votes.up", equalTo(15L))
-                .body("votes.down", equalTo(2L))
-                .body("voted", equalTo(true));
+                .body("votings.up", equalTo(15L))
+                .body("votings.down", equalTo(2L))
+                .body("votings.voted", equalTo("up"));
     }
 
 }

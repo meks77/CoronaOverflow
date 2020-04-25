@@ -18,8 +18,6 @@ public class PostingTranslator {
                 .withText(posting.text().text())
                 .withDate(ZonedDateTime.ofInstant(posting.created().timestamp().toInstant(), ZoneId.of("UTC"))
                         .format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) + "Z")
-                .withVoted(false)
-                .withVotes(new VotesDto(posting.votes().upVotes(), posting.votes().downVotes()))
                 .build();
     }
 }

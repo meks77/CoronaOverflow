@@ -26,7 +26,4 @@ public class VotingService {
         votingRepo.save(votings);
     }
 
-    public void thumbDown(PostingId id, UserId user){
-
-    }
 }

@@ -44,8 +44,6 @@ public class PostingDto {
         private String date;
         private String title;
         private String text;
-        private VotesDto votes;
-        private boolean voted;
 
         private PostingDtoBuilder() {
         }
@@ -79,24 +77,12 @@ public class PostingDto {
             return this;
         }
 
-        public PostingDtoBuilder withVotes(VotesDto votes) {
-            this.votes = votes;
-            return this;
-        }
-
-        public PostingDtoBuilder withVoted(boolean voted) {
-            this.voted = voted;
-            return this;
-        }
-
         public PostingDto build() {
             PostingDto postingDto = new PostingDto();
             postingDto.userID = this.userID;
             postingDto.title = this.title;
-            postingDto.voted = this.voted;
             postingDto.date = this.date;
             postingDto.text = this.text;
-            postingDto.votes = this.votes;
             postingDto.postingID = this.postingID;
             return postingDto;
         }

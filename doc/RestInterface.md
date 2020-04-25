@@ -28,8 +28,8 @@ url: /labels
             "down": 4545,
             "voted": "up",
             "links": [
-              { "action": "voteUp", "method": "PUT", "url": "/posting/postingId/voteUp" },
-              { "action": "voteDown", "method": "PUT", "url": "/posting/postingId/voteDown" }
+              { "action": "voteUp", "method": "PUT", "url": "/voting/postingId/voteUp" },
+              { "action": "voteDown", "method": "PUT", "url": "/voting/postingId/voteDown" }
             ]}  
     }
 ]

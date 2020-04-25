@@ -30,7 +30,8 @@ public class PostingTranslator {
                 .withVotes(new VotesDto(votings.amountUp(),
                                         votings.amountDown(),
                                         userId.flatMap( votings::voteForUser ).map(vote -> vote.isUp() ? "up" : "down").orElse(null),
-                                        linksToVoteFor( posting.id())
+                                        linksToVoteFor( posting.id()),
+                                        votings.rating()
                         )
                 )
                 .build();

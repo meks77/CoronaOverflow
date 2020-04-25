@@ -31,10 +31,12 @@ public class PostingsResource {
     @Path("/forLabel/{label}")
     @Produces(MediaType.APPLICATION_JSON)
     public List<PostingDto> getPosting(@PathParam("label") String label, @HeaderParam("X-CO-USERID") String userId) {
+        Comparator<PostingDto> byRanking = Comparator.comparingDouble( c -> c.getVotings().getRanking() );
+
         return postingRepo.findAllByLabel(new Label(new Name(label)))
                 .stream()
                 .map( posting -> postingTranslator.translate(posting, votingsRepo.loadVotings( posting.id() ), Optional.ofNullable( userId).map( UserId::new)))
-                .sorted(Comparator.comparingDouble( c -> c.getVotings().getRanking() ))
+                .sorted( byRanking.reversed() )
                 .collect(Collectors.toList());
     }
 

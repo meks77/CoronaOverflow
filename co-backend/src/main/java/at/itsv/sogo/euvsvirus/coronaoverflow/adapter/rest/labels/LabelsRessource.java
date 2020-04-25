@@ -3,10 +3,9 @@ package at.itsv.sogo.euvsvirus.coronaoverflow.adapter.rest.labels;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.service.label.LabelRepository;
 
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,6 +18,12 @@ public class LabelsRessource {
 
     @Inject
     LabelTranslator labelTranslator;
+
+    @POST
+    public Response createLabel(@HeaderParam("X-CO-LABEL") String labelText ){
+        labelRepo.create( labelText );
+        return Response.ok().build();
+    }
 
     @GET
     public List<LabelDto> getAllLabels() {

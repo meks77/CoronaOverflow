@@ -21,4 +21,13 @@ public class LabelRepositoryJpa implements LabelRepository {
                 .map(labelTranslator::translate)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public void create(String labelText) {
+        if(LabelDbEntity.findByName( labelText ).isPresent() ) {
+            return;
+        }
+
+        LabelDbEntity.persist( new LabelDbEntity( labelText ));
+    }
 }

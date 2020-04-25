@@ -12,6 +12,13 @@ public class LabelDbEntity extends PanacheEntity {
 
     public String name;
 
+    public LabelDbEntity() {
+    }
+
+    public LabelDbEntity( String name ) {
+        this.name = name;
+    }
+
     public static Optional<LabelDbEntity> findByName(String name) {
         return find("name", name).singleResultOptional();
     }

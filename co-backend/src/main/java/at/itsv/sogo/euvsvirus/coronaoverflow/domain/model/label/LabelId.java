@@ -8,8 +8,4 @@ public class LabelId extends Id {
         super(uuid);
     }
 
-    @Override
-    protected String contextPath() {
-        return "labels/";
-    }
 }

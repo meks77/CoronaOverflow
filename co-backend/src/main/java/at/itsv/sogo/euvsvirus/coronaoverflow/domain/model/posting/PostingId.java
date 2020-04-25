@@ -8,8 +8,4 @@ public class PostingId extends Id {
         super(uuid);
     }
 
-    @Override
-    protected String contextPath() {
-        return "postings/";
-    }
 }

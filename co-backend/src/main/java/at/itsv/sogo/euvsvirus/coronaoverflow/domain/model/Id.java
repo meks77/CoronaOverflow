@@ -12,9 +12,7 @@ public abstract class Id {
     }
 
     public String asLink() {
-        return contextPath() + uuid;
+        return uuid;
     }
-
-    protected abstract String contextPath();
 
 }

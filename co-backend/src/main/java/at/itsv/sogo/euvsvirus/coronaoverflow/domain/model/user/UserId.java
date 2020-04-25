@@ -8,8 +8,4 @@ public class UserId extends Id {
         super(uniqueId);
     }
 
-    @Override
-    protected String contextPath() {
-        return "users/";
-    }
 }

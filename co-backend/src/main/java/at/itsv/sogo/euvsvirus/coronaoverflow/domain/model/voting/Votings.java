@@ -21,7 +21,7 @@ public class Votings {
     }
 
     public Optional<ErrorMessage> addVote(Vote vote) {
-        // TODO: check invariant => No double voting, define if we throw error or replace an already existing vote?
+        votes.removeIf( v -> v.user().equals( vote.user() ));
         votes.add( vote );
         return Optional.empty();
     }

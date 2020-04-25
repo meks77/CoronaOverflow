@@ -1,7 +1,7 @@
 insert into USERS values ('user1');
 insert into USERS values ('user2');
 
-insert into LABELS values (hibernate_sequence.nextval, 'LabelX');
+insert into LABELS values (hibernate_sequence.nextval, 'Label X');
 insert into LABELS values (hibernate_sequence.nextval, 'LabelY');
 insert into LABELS values (hibernate_sequence.nextval, 'LabelZ');
 

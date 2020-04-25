@@ -14,7 +14,7 @@ class LabelTranslator {
     LabelDto from(Label label) {
         try {
             return new LabelDto(label.name().text(),
-                    new Link("view", "/postings/forLabel/" + URLEncoder.encode(label.name().text(), "UTF-8"), Method.GET));
+                    new Link("view", "/postings/forLabel/" + URLEncoder.encode(label.name().text(), "UTF-8").replace("+", "%20"), Method.GET));
         } catch (UnsupportedEncodingException e) {
             throw new IllegalStateException( e );
         }

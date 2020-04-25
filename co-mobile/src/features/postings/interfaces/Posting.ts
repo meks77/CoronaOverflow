@@ -8,5 +8,5 @@ export interface Posting {
         up: number,
         down: number
     },
-    voted: boolean
+    voted: string
 }

@@ -5,6 +5,7 @@ import {NavigationStackProp} from 'react-navigation-stack';
 import {colors} from '../../styles/Colors';
 import {Label} from "./interfaces/Label";
 import {Posting} from "./interfaces/Posting";
+import {PostingsCard} from "./components/PostingsCard";
 
 
 interface Props {
@@ -25,31 +26,47 @@ export class PostingsScreen extends React.Component<Props> {
         this.setState({postingsList: postingsList});
     }
 
+    checkVote = (item: Posting, vote: string): string =>    {
+        if (item.voted !== null) {
+            if (item.voted === "up") {
+                if (vote === "down") {
+                    vote = "down"
+                } else {
+                    vote = ""
+                }
+            } else if (item.voted === "down"){
+                if (vote === "up") {
+                    vote = "up"
+                } else {
+                    vote = ""
+                }
+            }
+        }
+        return vote
+    }
+
+    sendVote = (item: Posting, vote: string) => {
+        vote = this.checkVote(item, vote);
+        console.log(vote)
+        const list = this.state.postingsList;
+        const newItem = item;
+        newItem.voted = vote;
+        const indexOfItem = list.indexOf(item as never);
+        list[indexOfItem] = newItem;
+        this.setState({postingsList: list});
+    }
+
     render() {
         return (
             <ScrollView style={{flex: 1, backgroundColor: colors.light_grey}}>
                 <View style={{paddingBottom:25}}>
                 {this.state.postingsList.map((item: Posting, i: number) => (
-                    <Card key={i}>
-                        <View style={{flexDirection: "row", marginBottom: 10}}>
-                            <Icon
-                                name="user"
-                                type="evilicon"
-                                color={colors.primary_light_green}
-                                size={40}
-                            />
-                            <Text style={{fontSize: 25, color: colors.dark_grey}}>
-                                {item.username}
-                            </Text>
-                        </View>
-                        <Divider />
-                        <Text style={{fontSize: 20, marginVertical: 10, color: colors.dark_grey}}>
-                            {item.title}
-                        </Text>
-                        <Text style={{marginBottom: 10, color: colors.dark_grey}}>
-                            {item.text}
-                        </Text>
-                    </Card>
+                    <PostingsCard
+                        key={i}
+                        item={item}
+                        onVote={(vote) => {
+                            this.sendVote(item, vote);
+                        }} />
                 ))}
                 </View>
             </ScrollView>

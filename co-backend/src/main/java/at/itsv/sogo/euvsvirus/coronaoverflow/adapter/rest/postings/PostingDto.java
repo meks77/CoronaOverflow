@@ -1,5 +1,7 @@
 package at.itsv.sogo.euvsvirus.coronaoverflow.adapter.rest.postings;
 
+import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting.Votes;
+
 public class PostingDto {
 
     private String postingID;
@@ -44,6 +46,7 @@ public class PostingDto {
         private String date;
         private String title;
         private String text;
+        private VotesDto votes;
 
         private PostingDtoBuilder() {
         }
@@ -77,6 +80,11 @@ public class PostingDto {
             return this;
         }
 
+        public PostingDtoBuilder withVotes(VotesDto votes ){
+            this.votes = votes;
+            return this;
+        }
+
         public PostingDto build() {
             PostingDto postingDto = new PostingDto();
             postingDto.userID = this.userID;
@@ -84,6 +92,7 @@ public class PostingDto {
             postingDto.date = this.date;
             postingDto.text = this.text;
             postingDto.postingID = this.postingID;
+            postingDto.votes = this.votes;
             return postingDto;
         }
     }

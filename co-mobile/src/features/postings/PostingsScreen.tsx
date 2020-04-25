@@ -6,7 +6,8 @@ import {Label} from "./interfaces/Label";
 import {Posting} from "./interfaces/Posting";
 import {PostingsCard} from "./components/PostingsCard";
 import {fetchData} from "../../services/rest/FetchData";
-import {Button, Icon, Input, Overlay, Text} from "react-native-elements";
+import {Button, Icon, Input, Overlay, SearchBar, Text} from "react-native-elements";
+import {searchLabel, searchPosting} from "../../data/Search";
 
 interface Props {
     navigation: NavigationStackProp<{label: Label}>;
@@ -17,9 +18,11 @@ export class PostingsScreen extends React.Component<Props> {
 
     state = {
         overlayVisible: false,
+        displayList: [],
         postingsList: [],
         newPostingTitle: "",
-        newPostingMessage: ""
+        newPostingMessage: "",
+        searchText: ""
     }
 
     componentDidMount = () => {
@@ -39,7 +42,10 @@ export class PostingsScreen extends React.Component<Props> {
             .then((result: any) => {
                 console.log(result);
                 //this.setState({labelsList: result});
-                this.setState({postingsList: result});
+                this.setState({
+                    postingsList: result,
+                    displayList: result
+                });
             })
             .catch((error:any) => {
                 console.log(error);
@@ -101,6 +107,23 @@ export class PostingsScreen extends React.Component<Props> {
         console.log(title, message);
     }
 
+    onSearchTextChange = (value: string) => {
+        if (value.length > 0) {
+            console.log(value);
+            const displayList = searchPosting(this.state.postingsList as never, value);
+            this.setState({
+                searchText: value,
+                displayList: displayList
+            });
+        }
+        else {
+            this.setState(({
+                searchText: value,
+                displayList: this.state.postingsList
+            }))
+        }
+    }
+
     render() {
         return (
             <ScrollView style={{flex: 1, backgroundColor: colors.light_grey}}>
@@ -148,8 +171,17 @@ export class PostingsScreen extends React.Component<Props> {
                         </View>
                     </View>
                 </Overlay>
+                <SearchBar
+                    placeholder="Type Here..."
+                    value={this.state.searchText}
+                    onChangeText={(value) => {
+                        this.onSearchTextChange(value);
+                    }}
+                    lightTheme={true}
+                    containerStyle={{backgroundColor: colors.primary_white}}
+                    inputContainerStyle={{backgroundColor: colors.light_grey}} />
                 <View style={{paddingBottom:25}}>
-                {this.state.postingsList.map((item: Posting, i: number) => (
+                {this.state.displayList.map((item: Posting, i: number) => (
                     <PostingsCard
                         key={i}
                         item={item}

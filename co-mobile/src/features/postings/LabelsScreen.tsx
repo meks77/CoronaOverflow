@@ -1,11 +1,12 @@
 import React from 'react';
 import {ScrollView, TouchableOpacity, View} from 'react-native';
-import {Icon, ListItem, Overlay, Text, Input, Button} from 'react-native-elements';
+import {Icon, ListItem, Overlay, Text, Input, Button, SearchBar} from 'react-native-elements';
 import {colors} from '../../styles/Colors';
 import {Label} from "./interfaces/Label";
 import {NavigationStackProp} from "react-navigation-stack";
 import {fetchData, postLabel} from "../../services/rest/FetchData";
 import {Routes} from "../../services/api/Routes";
+import {searchLabel} from "../../data/Search";
 
 interface Props {
     navigation: NavigationStackProp<{data: string}>;
@@ -16,8 +17,10 @@ export class LabelsScreen extends React.Component <Props> {
 
     state = {
         overlayVisible: false,
+        displayList: [],
         labelsList: [],
-        newLabelValue: ""
+        newLabelValue: "",
+        searchText: ""
     }
 
     componentDidMount = () => {
@@ -35,7 +38,10 @@ export class LabelsScreen extends React.Component <Props> {
         fetchData(Routes.LABELS, "GET")
             .then((result: any) => {
                 console.log(result);
-                this.setState({labelsList: result});
+                this.setState({
+                    displayList: result,
+                    labelsList: result
+                });
             })
             .catch((error:any) => {
                 console.log(error);
@@ -53,6 +59,23 @@ export class LabelsScreen extends React.Component <Props> {
             .catch((error:any) => {
                 console.log(error);
             });
+    }
+
+    onSearchTextChange = (value: string) => {
+        if (value.length > 0) {
+            console.log(value);
+            const displayList = searchLabel(this.state.labelsList as never, value);
+            this.setState({
+                searchText: value,
+                displayList: displayList
+            });
+        }
+        else {
+            this.setState(({
+                searchText: value,
+                displayList: this.state.labelsList
+            }))
+        }
     }
 
     render() {
@@ -92,7 +115,16 @@ export class LabelsScreen extends React.Component <Props> {
                         </View>
                     </View>
                 </Overlay>
-                {this.state.labelsList.map((item: Label, i: number) => (
+                <SearchBar
+                    placeholder="Type Here..."
+                    value={this.state.searchText}
+                    onChangeText={(value) => {
+                        this.onSearchTextChange(value);
+                    }}
+                    lightTheme={true}
+                    containerStyle={{backgroundColor: colors.primary_white}}
+                    inputContainerStyle={{backgroundColor: colors.light_grey}} />
+                {this.state.displayList.map((item: Label, i: number) => (
                     <ListItem
                         key={i}
                         title={item.label}

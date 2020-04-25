@@ -41,6 +41,8 @@ public class Posting {
 
     }
 
+
+
     public Id id() {
         return id;
     }

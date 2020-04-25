@@ -46,6 +46,17 @@ url: /labels
 }
 ```
 
+## In Case of Error, Statuscode != 200
+```json
+[
+    {
+        "summary": "string",
+        "errortext": "string"
+    }
+]
+```
+
+
 ## Vote
 ```json
 {

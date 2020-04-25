@@ -11,6 +11,6 @@ class LabelTranslator {
 
     LabelDto from(Label label) {
         return new LabelDto(label.name().text(),
-                new Link("/postings/forLabel/" + label.name().text(), Method.GET));
+                new Link("view", "/postings/forLabel/" + label.name().text(), Method.GET));
     }
 }

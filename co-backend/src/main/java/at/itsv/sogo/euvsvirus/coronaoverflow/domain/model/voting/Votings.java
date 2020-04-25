@@ -25,4 +25,15 @@ public class Votings {
         votes.add( vote );
         return Optional.empty();
     }
+
+    public long amountUp() {
+        return votes.stream().filter(Vote::isUp).count();
+    }
+    public long amountDown() {
+        return votes.stream().filter(Vote::isDown).count();
+    }
+
+    public Optional<Vote> voteForUser(UserId userId) {
+        return votes.stream().filter( v -> userId.equals( v.user() )).findFirst();
+    }
 }

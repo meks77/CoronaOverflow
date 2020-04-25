@@ -43,7 +43,7 @@ public class Posting {
 
 
 
-    public Id id() {
+    public PostingId id() {
         return id;
     }
 
@@ -51,7 +51,7 @@ public class Posting {
         return title;
     }
 
-    public Id labelId() {
+    public LabelId labelId() {
         return labelId;
     }
 
@@ -63,7 +63,7 @@ public class Posting {
         return text;
     }
 
-    public Id userId() {
+    public UserId userId() {
         return userId;
     }
 

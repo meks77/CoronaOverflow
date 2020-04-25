@@ -1,6 +1,6 @@
 package at.itsv.sogo.euvsvirus.coronaoverflow.adapter.rest.label;
 
-import at.itsv.sogo.euvsvirus.coronaoverflow.model.repos.LabelRepository;
+import at.itsv.sogo.euvsvirus.coronaoverflow.domain.repos.LabelRepository;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;

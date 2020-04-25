@@ -1,6 +1,6 @@
 package at.itsv.sogo.euvsvirus.coronaoverflow.adapter.rest.label;
 
-import at.itsv.sogo.euvsvirus.coronaoverflow.model.aggregates.Label;
+import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.Label;
 
 import javax.enterprise.context.ApplicationScoped;
 

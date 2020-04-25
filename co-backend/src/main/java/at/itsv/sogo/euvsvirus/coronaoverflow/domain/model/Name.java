@@ -1,4 +1,4 @@
-package at.itsv.sogo.euvsvirus.coronaoverflow.model.aggregates;
+package at.itsv.sogo.euvsvirus.coronaoverflow.domain.model;
 
 @ValueObject
 public class Name {

@@ -126,51 +126,7 @@ export class PostingsScreen extends React.Component<Props> {
 
     render() {
         return (
-            <ScrollView style={{flex: 1, backgroundColor: colors.light_grey}}>
-                <Overlay isVisible={this.state.overlayVisible}>
-                    <View style={{flex: 1}}>
-                        <View style={{width: "100%", alignItems: "flex-end"}}>
-                            <TouchableOpacity style={{}} onPress={() => this.setState({overlayVisible: false})}>
-                                <Icon
-                                    name="close"
-                                    type="material"
-                                    color={colors.dark_grey}
-                                    size={35}
-                                />
-                            </TouchableOpacity>
-                        </View>
-                        <View style={{flex: 1, justifyContent: "center", alignItems: "center", padding: 10}}>
-                            <Text h4 h4Style={{color: colors.dark_grey}}>{"Add a new post"}</Text>
-                            <Text style={{color: colors.dark_grey, marginTop: 20}}>{"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut."}</Text>
-                            <Input
-                                containerStyle={{marginTop: 30}}
-                                label={"Title of your post"}
-                                placeholder='Example: Hello World'
-                                value={this.state.newPostingTitle}
-                                onChangeText={(value) => {
-                                    console.log(value);
-                                    this.setState({newPostingTitle: value});
-                                }}
-                            />
-                            <Input
-                                containerStyle={{marginTop: 30}}
-                                label={"Message of your post"}
-                                placeholder='Example: What a beautiful day!'
-                                value={this.state.newPostingMessage}
-                                onChangeText={(value) => {
-                                    console.log(value);
-                                    this.setState({newPostingMessage: value});
-                                }}
-                                multiline={true}
-                            />
-                            <Button
-                                title={"POST"}
-                                titleStyle={{color: colors.primary_light_green, textAlign:"center", justifyContent: "center"}}
-                                buttonStyle={{marginTop: 40, backgroundColor: colors.primary_white, borderWidth: 2, borderColor: colors.primary_light_green, borderRadius: 500, alignItems: "center", paddingHorizontal:50, justifyContent: "center"}}
-                                onPress={() => {this.onAddPostPressed(this.state.newPostingTitle, this.state.newPostingMessage)}} />
-                        </View>
-                    </View>
-                </Overlay>
+            <>
                 <SearchBar
                     placeholder="Type Here..."
                     value={this.state.searchText}
@@ -180,17 +136,63 @@ export class PostingsScreen extends React.Component<Props> {
                     lightTheme={true}
                     containerStyle={{backgroundColor: colors.primary_white}}
                     inputContainerStyle={{backgroundColor: colors.light_grey}} />
-                <View style={{paddingBottom:25}}>
-                {this.state.displayList.map((item: Posting, i: number) => (
-                    <PostingsCard
-                        key={i}
-                        item={item}
-                        onVote={(vote) => {
-                            this.sendVote(item, vote);
-                        }} />
-                ))}
-                </View>
-            </ScrollView>
+                <ScrollView style={{flex: 1, backgroundColor: colors.light_grey}}>
+                    <Overlay isVisible={this.state.overlayVisible}>
+                        <View style={{flex: 1}}>
+                            <View style={{width: "100%", alignItems: "flex-end"}}>
+                                <TouchableOpacity style={{}} onPress={() => this.setState({overlayVisible: false})}>
+                                    <Icon
+                                        name="close"
+                                        type="material"
+                                        color={colors.dark_grey}
+                                        size={35}
+                                    />
+                                </TouchableOpacity>
+                            </View>
+                            <View style={{flex: 1, justifyContent: "center", alignItems: "center", padding: 10}}>
+                                <Text h4 h4Style={{color: colors.dark_grey}}>{"Add a new post"}</Text>
+                                <Text style={{color: colors.dark_grey, marginTop: 20}}>{"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut."}</Text>
+                                <Input
+                                    containerStyle={{marginTop: 30}}
+                                    label={"Title of your post"}
+                                    placeholder='Example: Hello World'
+                                    value={this.state.newPostingTitle}
+                                    onChangeText={(value) => {
+                                        console.log(value);
+                                        this.setState({newPostingTitle: value});
+                                    }}
+                                />
+                                <Input
+                                    containerStyle={{marginTop: 30}}
+                                    label={"Message of your post"}
+                                    placeholder='Example: What a beautiful day!'
+                                    value={this.state.newPostingMessage}
+                                    onChangeText={(value) => {
+                                        console.log(value);
+                                        this.setState({newPostingMessage: value});
+                                    }}
+                                    multiline={true}
+                                />
+                                <Button
+                                    title={"POST"}
+                                    titleStyle={{color: colors.primary_light_green, textAlign:"center", justifyContent: "center"}}
+                                    buttonStyle={{marginTop: 40, backgroundColor: colors.primary_white, borderWidth: 2, borderColor: colors.primary_light_green, borderRadius: 500, alignItems: "center", paddingHorizontal:50, justifyContent: "center"}}
+                                    onPress={() => {this.onAddPostPressed(this.state.newPostingTitle, this.state.newPostingMessage)}} />
+                            </View>
+                        </View>
+                    </Overlay>
+                    <View style={{paddingBottom:25}}>
+                    {this.state.displayList.map((item: Posting, i: number) => (
+                        <PostingsCard
+                            key={i}
+                            item={item}
+                            onVote={(vote) => {
+                                this.sendVote(item, vote);
+                            }} />
+                    ))}
+                    </View>
+                </ScrollView>
+            </>
         );
     }
 }

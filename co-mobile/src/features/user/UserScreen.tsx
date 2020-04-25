@@ -1,8 +1,7 @@
 import React from 'react';
 import {AsyncStorage, ScrollView, View} from 'react-native';
-import {Button, Icon, Input, ListItem, Text} from 'react-native-elements';
+import {Button, Icon, Input, Text} from 'react-native-elements';
 import {colors} from '../../styles/Colors';
-import Moment from "moment";
 import {UserDetailListItem} from "./components/UserDetailListItem";
 import {Constants} from "../../services/Constants";
 

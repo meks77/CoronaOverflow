@@ -4,7 +4,7 @@ import {Icon, ListItem, Overlay, Text, Input, Button} from 'react-native-element
 import {colors} from '../../styles/Colors';
 import {Label} from "./interfaces/Label";
 import {NavigationStackProp} from "react-navigation-stack";
-import {fetchData} from "../../services/rest/FetchData";
+import {fetchData, postLabel} from "../../services/rest/FetchData";
 import {Routes} from "../../services/api/Routes";
 
 interface Props {
@@ -43,13 +43,20 @@ export class LabelsScreen extends React.Component <Props> {
     }
 
     onAddLabelPressed = (value: string) => {
-        this.setState({overlayVisible: false});
-        console.log(value);
+        postLabel(value)
+            .then((result: any) => {
+                this.setState({
+                    overlayVisible: false,
+                    labelsList: result
+                });
+            })
+            .catch((error:any) => {
+                console.log(error);
+            });
     }
 
     render() {
         return (
-
             <ScrollView style={{flex: 1, backgroundColor: colors.light_grey}}>
                 <Overlay isVisible={this.state.overlayVisible}>
                     <View style={{flex: 1}}>

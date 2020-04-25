@@ -1,0 +1,74 @@
+[
+  {
+    "postingID": 6,
+    "username": "steve.jobs",
+    "date": "2020-04-24T17:18:27.600Z",
+    "title": "How to get along with the crisis?",
+    "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
+    "votes": {
+      "up": 123,
+      "down": 30
+    },
+    "voted": "up"
+  },
+  {
+    "postingID": 5,
+    "username": "bill.gates",
+    "date": "2020-04-23T17:18:27.600Z",
+    "title": "This are my experiences",
+    "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. ",
+    "votes": {
+      "up": 50,
+      "down": 10
+    },
+    "voted": null
+  },
+  {
+    "postingID": 4,
+    "username": "elon.musk",
+    "date": "2020-04-22T17:18:27.600Z",
+    "title": "The best ideas to get along with boredom",
+    "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+    "votes": {
+      "up": 50,
+      "down": 100
+    },
+    "voted": "down"
+  },
+  {
+    "postingID": 3,
+    "username": "steve.jobs",
+    "date": "2020-04-21T17:18:27.600Z",
+    "title": "How to get along with the crisis?",
+    "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
+    "votes": {
+      "up": 123,
+      "down": 30
+    },
+    "voted": "up"
+  },
+  {
+    "postingID": 2,
+    "username": "bill.gates",
+    "date": "2020-04-20T17:18:27.600Z",
+    "title": "This are my experiences",
+    "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. ",
+    "votes": {
+      "up": 50,
+      "down": 10
+    },
+    "voted": null
+  },
+  {
+    "postingID": 1,
+    "username": "elon.musk",
+    "date": "2020-04-19T17:18:27.600Z",
+    "title": "The best ideas to get along with boredom",
+    "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+    "votes": {
+      "up": 50,
+      "down": 100
+    },
+    "voted": "down"
+  }
+]

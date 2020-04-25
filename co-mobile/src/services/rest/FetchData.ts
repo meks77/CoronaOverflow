@@ -34,3 +34,27 @@ export function postLabel(label: string) {
             });
     });
 }
+
+export function postPosting(userID: string, label: string, text: string, title: string) {
+    return new Promise((resolve, reject) => {
+        fetch(Routes.BASEURL + Routes.POSTINGS, {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                "X-CO-USERID": userID
+            },
+            body: JSON.stringify({
+                label: label,
+                text: text,
+                title: title
+            }),
+        })
+            .then((response) => {
+                resolve(response);
+            })
+            .catch((error) => {
+                reject(error)
+            });
+    });
+}

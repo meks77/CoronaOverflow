@@ -5,9 +5,10 @@ import {colors} from '../../styles/Colors';
 import {Label} from "./interfaces/Label";
 import {Posting} from "./interfaces/Posting";
 import {PostingsCard} from "./components/PostingsCard";
-import {fetchData} from "../../services/rest/FetchData";
+import {fetchData, postPosting} from "../../services/rest/FetchData";
 import {Button, Icon, Input, Overlay, SearchBar, Text} from "react-native-elements";
-import {searchLabel, searchPosting} from "../../data/Search";
+import {searchPosting} from "../../data/Search";
+import {getUsername} from "../../data/Username";
 
 interface Props {
     navigation: NavigationStackProp<{label: Label}>;
@@ -38,6 +39,11 @@ export class PostingsScreen extends React.Component<Props> {
                     />
                 </TouchableOpacity>
             )});
+        this.fetchPostings();
+    }
+
+    fetchPostings = () => {
+        const label: Label = this.props.route.params.label;
         fetchData(label.link.url, label.link.method)
             .then((result: any) => {
                 console.log(result);
@@ -105,6 +111,15 @@ export class PostingsScreen extends React.Component<Props> {
     onAddPostPressed = (title: string, message: string) => {
         this.setState({overlayVisible: false});
         console.log(title, message);
+        getUsername()
+            .then((userID: string) => {
+                console.log(userID, this.props.route.params.label.label, message, title)
+                postPosting(userID, this.props.route.params.label.label, message, title)
+                    .then((response) => {
+                        this.fetchPostings();
+                    })
+            })
+
     }
 
     onSearchTextChange = (value: string) => {

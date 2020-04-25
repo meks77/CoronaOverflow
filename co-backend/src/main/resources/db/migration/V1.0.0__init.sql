@@ -21,6 +21,7 @@ create table USERS (
 );
 
 create table VOTINGS (
+    ID IDENTITY,
     USER_ID VARCHAR(50),
     POST_ID VARCHAR(50),
     VOTED VARCHAR(50),

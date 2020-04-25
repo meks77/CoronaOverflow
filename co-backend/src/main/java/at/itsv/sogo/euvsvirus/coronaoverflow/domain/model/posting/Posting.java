@@ -16,7 +16,6 @@ public class Posting {
     private LabelId labelId;
     private Timestamp created;
     private PostingText text;
-    private Votes votes;
 
     public Posting(CreatePostingCmd cmd) {
         id = cmd.getId();
@@ -25,7 +24,6 @@ public class Posting {
         labelId = cmd.getLabelId();
         created = cmd.getCreated();
         text = cmd.getText();
-        votes = new Votes();
     }
 
 
@@ -48,10 +46,6 @@ public class Posting {
 
     public PostingText text() {
         return text;
-    }
-
-    public Votes votes() {
-        return votes;
     }
 
     public Id userId() {

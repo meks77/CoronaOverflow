@@ -10,6 +10,6 @@ public class UserId extends Id {
 
     @Override
     protected String contextPath() {
-        return "user/";
+        return "users/";
     }
 }

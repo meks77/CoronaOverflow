@@ -10,6 +10,6 @@ public class LabelId extends Id {
 
     @Override
     protected String contextPath() {
-        return "label/";
+        return "labels/";
     }
 }

@@ -1,13 +1,15 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, Image} from 'react-native';
 import {Button, Card, Divider, Icon, Text} from 'react-native-elements';
-import {colors} from "../../../styles/Colors";
+import {colors} from "../styles/Colors";
 import {Posting} from "../interfaces/Posting";
 import Moment from 'moment';
+import {Routes} from "../services/api/Routes";
 
 interface Props {
     key: number,
     item: Posting,
+    baseURL: string,
     onVote(vote: string): any,
 }
 
@@ -32,6 +34,14 @@ export class PostingsCard extends React.Component<Props> {
                     </View>
                 </View>
                 <Divider />
+                {
+                    this.props.item.image !== undefined && this.props.item.image.url.length > 0 &&
+                    <Image style={{
+                        width: "100%",
+                        height: 250,
+                        resizeMode: 'contain',
+                    }} source={{uri: this.props.baseURL + "/" + this.props.item.image.url}}/>
+                }
                 <Text style={{fontSize: 20, marginVertical: 10, color: colors.dark_grey}}>
                     {this.props.item.title}
                 </Text>

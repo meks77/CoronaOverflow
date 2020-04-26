@@ -50,6 +50,8 @@ export class HomeScreen extends React.Component {
                 </Card>
             ))}
           </View>
+            <Text style={{marginBottom: 0, marginTop: 10, fontSize: 15, fontWeight: "bold", lineHeight: 20, color: colors.dark_grey, paddingHorizontal: 20}}>Source:</Text>
+            <Text style={{marginBottom: 50, fontSize: 15, lineHeight: 20, color: colors.dark_grey, paddingHorizontal: 20}}>https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public</Text>
         </ScrollView>
     );
   }

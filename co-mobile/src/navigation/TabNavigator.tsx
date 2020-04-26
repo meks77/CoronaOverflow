@@ -6,6 +6,7 @@ import PostingsStack from "./stacks/PostingsStack";
 import HomeStack from "./stacks/HomeStack";
 import UserStack from "./stacks/UserStack";
 import InfoStack from "./stacks/InfoStack";
+import TrendingStack from "./stacks/TrendingStack";
 Icon.loadFont();
 
 const Tab = createBottomTabNavigator();
@@ -18,6 +19,8 @@ export default function TabNavigator() {
           let iconName;
           if (route.name === 'Home') {
             iconName = 'md-home';
+          } else if (route.name === 'Trending') {
+              iconName = 'md-star';
           } else if (route.name === 'Postings') {
               iconName = 'md-chatbubbles';
           } else if (route.name === 'User') {
@@ -41,6 +44,7 @@ export default function TabNavigator() {
         showLabel: false,
       }}>
       <Tab.Screen name="Home" component={HomeStack} />
+      <Tab.Screen name="Trending" component={TrendingStack} />
       <Tab.Screen name="Postings" component={PostingsStack} />
       <Tab.Screen name="User" component={UserStack} />
       <Tab.Screen name="Info" component={InfoStack} />

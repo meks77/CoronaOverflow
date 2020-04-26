@@ -19,6 +19,7 @@ import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
@@ -27,11 +28,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Path("/postings")
 @Produces(MediaType.APPLICATION_JSON)
@@ -62,19 +61,11 @@ public class PostingsResource {
     }
 
     @GET
-    @Path("/trends/trending-austria")
+    @Path("/trends/trending-who")
     @Produces(MediaType.APPLICATION_JSON)
-    @Operation(summary = "get trending posts in austria")
-    public List<PostingDto> getTrendingAustria(@HeaderParam("X-CO-USERID") String userId){
-        return Arrays.asList(PostingDto.PostingDtoBuilder.aPostingDto().withPostingID("demoid")
-                .withText("It is nice to have a top trending post in austria, isn't it?")
-                .withTitle("Top 1 in Austria")
-                .withVotes( new VotesDto(42, 0, null, null, 2.0))
-                .withUserID("Meks")
-                .withDate("2020-04-25T18:10:19.075Z")
-                .build()
-        );
-
+    @Operation(summary = "get trending posts of the WHO")
+    public List<PostingDto> getTrendingWorldHealthOrganisation(@HeaderParam("X-CO-USERID") String userId){
+        return asRankedPostings( postingRepo.findAllPostingsByUser( new UserId("WHO")), userId );
     }
 
     @GET
@@ -82,10 +73,12 @@ public class PostingsResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "get all posting of one label")
     public List<PostingDto> getPosting(@PathParam("label") String label, @HeaderParam("X-CO-USERID") String userId) {
-        Comparator<PostingDto> byRanking = Comparator.comparingDouble(c -> c.getVotings().getRanking());
+        return asRankedPostings( postingRepo.findAllByLabel(new Label(new Name(label))), userId );
+    }
 
-        return postingRepo.findAllByLabel(new Label(new Name(label)))
-                .stream()
+    private List<PostingDto> asRankedPostings(Collection<Posting> postingSource, String userId ){
+        Comparator<PostingDto> byRanking = Comparator.comparingDouble(c -> c.getVotings().getRanking());
+        return postingSource.stream()
                 .map(posting -> postingTranslator.translate(posting, votingsRepo.loadVotings(posting.id()),
                         Optional.ofNullable(userId).map(UserId::new)))
                 .sorted(byRanking.reversed())

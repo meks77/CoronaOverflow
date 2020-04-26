@@ -20,7 +20,7 @@ public class TrendingRessource {
     public List<TrendDto> getAllTrends() {
         return Arrays.asList(
                 new TrendDto("Top 10", new Link("topten", "/postings/trends/topten", Method.GET)),
-                new TrendDto("Trending in Austria", new Link("topaustria", "/postings/trends/trending-austria", Method.GET))
+                new TrendDto("Trending in Austria", new Link("top-who", "/postings/trends/trending-who", Method.GET))
         );
     }
 }

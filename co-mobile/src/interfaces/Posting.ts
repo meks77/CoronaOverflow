@@ -1,9 +1,9 @@
 export interface Posting {
     date: string,
     "image": {
-        content: string,
-        mimeType: string,
-        name: string
+        action: string,
+        method: string,
+        url: string
     },
     postingID: string,
     text: string,

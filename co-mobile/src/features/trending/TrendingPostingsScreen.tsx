@@ -9,6 +9,7 @@ import {fetchData, sendVoting} from "../../services/rest/FetchData";
 import {Button, Icon, Input, Overlay, SearchBar, Text} from "react-native-elements";
 import {searchPosting} from "../../data/Search";
 import {getUsername} from "../../data/Username";
+import {getURL} from "../../data/URL";
 
 interface Props {
     navigation: NavigationStackProp<{label: Label}>;
@@ -23,7 +24,8 @@ export class TrendingPostingsScreen extends React.Component<Props> {
         postingsList: [],
         newPostingTitle: "",
         newPostingMessage: "",
-        searchText: ""
+        searchText: "",
+        baseURL: ""
     }
 
     componentDidMount = () => {
@@ -37,10 +39,14 @@ export class TrendingPostingsScreen extends React.Component<Props> {
         fetchData(label.link.url, label.link.method)
             .then((result: any) => {
                 console.log(result);
-                this.setState({
-                    postingsList: result,
-                    displayList: result
-                });
+                getURL()
+                    .then((url: string) => {
+                        this.setState({
+                            postingsList: result,
+                            displayList: result,
+                            baseURL: url
+                        });
+                    })
             })
             .catch((error:any) => {
                 console.log(error);

@@ -62,7 +62,8 @@ Communication between app and backend is done via a REST Api, allowing for futur
 ## What's next for CoronaOverflow
 
 - Posts may be searched for by hashtags and may be subscribed to follow them.
-- Additional 'Trend' categories, like regionbased ('Austria Top 10 Posts'),... 
+- Additional 'trend' categories, e.g. region based ('Austria Top 10 Posts'),... 
+- Templates for easy post creation, especially for step-by-step instructions.
 
 ## How To Run It on your machine:
 

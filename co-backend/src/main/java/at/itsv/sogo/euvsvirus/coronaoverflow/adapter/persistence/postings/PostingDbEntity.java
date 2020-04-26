@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.time.ZonedDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Table(name = "POSTS")
@@ -36,4 +37,5 @@ public class PostingDbEntity extends PanacheEntityBase {
         return list("label", label);
     }
 
+    static Optional<PostingDbEntity> findByID(String uuid) { return find("uuid", uuid).singleResultOptional(); }
 }

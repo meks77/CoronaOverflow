@@ -1,12 +1,19 @@
 export interface Posting {
-    postingID: number,
-    username: string,
     date: string,
-    title: string,
+    postingID: string,
     text: string,
-    votes: {
+    title: string,
+    userID: string,
+    votings: {
+        links: [
+            {
+                action: string,
+                method: string,
+                url: string
+            }
+        ],
+        down: number,
         up: number,
-        down: number
-    },
-    voted: boolean
+        voted: string
+    }
 }

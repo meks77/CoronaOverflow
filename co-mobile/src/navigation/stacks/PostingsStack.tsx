@@ -1,6 +1,6 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
-import {HeaderOptionsNoTitle, HeaderOptionsWithTitle} from '../header/HeaderOptions';
+import {HeaderOptionsWithTitle} from '../header/HeaderOptions';
 import {LabelsScreen} from "../../features/postings/LabelsScreen";
 import {PostingsScreen} from "../../features/postings/PostingsScreen";
 
@@ -12,7 +12,7 @@ export default function PostingsStack() {
             <Stack.Screen
                 name="Labels"
                 component={LabelsScreen}
-                options={HeaderOptionsNoTitle}
+                options={HeaderOptionsWithTitle('Labels')}
             />
             <Stack.Screen
                 name="Postings"

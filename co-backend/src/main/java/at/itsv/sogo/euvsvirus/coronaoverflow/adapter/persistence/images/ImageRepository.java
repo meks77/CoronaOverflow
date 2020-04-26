@@ -10,7 +10,7 @@ public class ImageRepository {
 
     public byte[] findImageForId(String imageId) {
         try {
-            return IOUtils.toByteArray(getClass().getResourceAsStream(imageId));
+            return IOUtils.toByteArray(getClass().getResourceAsStream("/" + imageId));
         } catch (IOException e) {
             throw new IllegalStateException("error while reading dummy picture", e);
         }

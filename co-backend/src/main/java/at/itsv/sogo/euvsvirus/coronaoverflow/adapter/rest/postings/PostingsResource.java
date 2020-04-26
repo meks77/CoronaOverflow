@@ -1,5 +1,7 @@
 package at.itsv.sogo.euvsvirus.coronaoverflow.adapter.rest.postings;
 
+import at.itsv.sogo.euvsvirus.coronaoverflow.adapter.rest.Link;
+import at.itsv.sogo.euvsvirus.coronaoverflow.adapter.rest.Method;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.label.Label;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.label.LabelId;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.label.Name;
@@ -23,6 +25,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
@@ -40,6 +43,37 @@ public class PostingsResource {
 
     @Inject
     PostingTranslator postingTranslator;
+
+    @GET
+    @Path("/trends/topten")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "get top ten trending posts")
+    public List<PostingDto> getTopTen(@HeaderParam("X-CO-USERID") String userId){
+        return Arrays.asList(PostingDto.PostingDtoBuilder.aPostingDto().withPostingID("demoid")
+                .withText("This is a demo Trending post. Top of the world.")
+                .withTitle("Top 10 Trending")
+                .withVotes( new VotesDto(5000, 0, null, null, 2.0))
+                .withUserID("Meks")
+                .withDate("2020-04-25T18:10:19.075Z")
+                .build()
+        );
+    }
+
+    @GET
+    @Path("/trends/trending-austria")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "get trending posts in austria")
+    public List<PostingDto> getTrendingAustria(@HeaderParam("X-CO-USERID") String userId){
+        return Arrays.asList(PostingDto.PostingDtoBuilder.aPostingDto().withPostingID("demoid")
+                .withText("It is nice to have a top trending post in austria, isn't it?")
+                .withTitle("Top 1 in Austria")
+                .withVotes( new VotesDto(42, 0, null, null, 2.0))
+                .withUserID("Meks")
+                .withDate("2020-04-25T18:10:19.075Z")
+                .build()
+        );
+
+    }
 
     @GET
     @Path("/forLabel/{label}")

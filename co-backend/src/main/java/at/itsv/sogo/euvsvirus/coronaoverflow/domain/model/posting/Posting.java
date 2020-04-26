@@ -7,6 +7,7 @@ import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.label.Title;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.user.UserId;
 
 import java.util.Objects;
+import java.util.Optional;
 
 @AggregateRoot
 public class Posting {
@@ -34,6 +35,7 @@ public class Posting {
         posting.labelId = props.getLabelId();
         posting.created = props.getCreated();
         posting.text = props.getText();
+        posting.image = props.getImage();
         return posting;
     }
 
@@ -72,7 +74,7 @@ public class Posting {
         return userId;
     }
 
-    public Image image() {
-        return image;
+    public Optional<Image> image() {
+        return Optional.ofNullable(image);
     }
 }

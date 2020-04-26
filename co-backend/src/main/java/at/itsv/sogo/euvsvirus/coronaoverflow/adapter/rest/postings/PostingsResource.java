@@ -9,6 +9,8 @@ import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.label.Title;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting.CreatePostingCmd;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting.Posting;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting.PostingText;
+import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting.Posting;
+import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting.PostingId;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.user.UserId;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.service.postings.PostingRepository;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.service.votings.VotingsRepository;
@@ -106,5 +108,19 @@ public class PostingsResource {
         postingRepo.save(newPosting);
     }
 
+
+    @GET
+    @Path("/{uuid}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public PostingDto getPostingByID(@PathParam("uuid") String uuid, @HeaderParam("X-CO-USERID") String userId) {
+
+        Optional<Posting> posting = postingRepo.findByID(new PostingId(uuid));
+        if(posting.isPresent()) {
+            return postingTranslator.translate(posting.get(), votingsRepo.loadVotings(posting.get().id()), Optional.ofNullable(userId).map(UserId::new));
+        }
+        else {
+            throw new IllegalStateException();
+        }
+    }
 
 }

@@ -6,12 +6,10 @@ import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting.Posting;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting.PostingId;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.user.UserId;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.voting.Votings;
-import org.jsoup.Connection;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -23,7 +21,7 @@ import java.util.Optional;
 public class PostingTranslator {
 
     PostingDto translate(Posting posting, Votings votings, Optional<UserId> userId) {
-        return PostingDto.PostingDtoBuilder.aPostingDto()
+        PostingDto.PostingDtoBuilder builder = PostingDto.PostingDtoBuilder.aPostingDto()
                 .withPostingID(posting.id().val())
                 .withUserID(posting.userId().val())
                 .withTitle(posting.title().text())
@@ -34,9 +32,11 @@ public class PostingTranslator {
                                         votings.amountDown(),
                                         userId.flatMap( votings::voteForUser ).map(vote -> vote.isUp() ? "up" : "down").orElse(null),
                                         linksToVoteFor( posting.id()),
-                                        votings.rating()))
-                .withImage(new Image("testpicture.jpg", "image/jpeg",  getFileContent("/dummyPicture.txt")))
-                .build();
+                                        votings.rating()));
+
+        posting.image().ifPresent( image -> builder.withImage( new Link("image", "images/" + image.name(), Method.GET) ));
+
+        return builder.build();
     }
 
     private String getFileContent(String fileName) {

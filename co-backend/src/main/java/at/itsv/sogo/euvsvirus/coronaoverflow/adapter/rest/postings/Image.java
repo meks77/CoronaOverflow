@@ -12,4 +12,15 @@ public class Image {
         this.content = content;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getMimeType() {
+        return mimeType;
+    }
+
+    public String getContent() {
+        return content;
+    }
 }

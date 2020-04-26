@@ -35,7 +35,7 @@ export class PostingsCard extends React.Component<Props> {
                 </View>
                 <Divider />
                 {
-                    this.props.item.image.url && this.props.item.image.url.length > 0 &&
+                    this.props.item.image !== undefined && this.props.item.image.url.length > 0 &&
                     <Image style={{
                         width: "100%",
                         height: 250,

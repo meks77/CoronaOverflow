@@ -83,7 +83,7 @@ export class TrendingLabelsScreen extends React.Component <Props> {
                             bottomDivider
                             chevron={{color: colors.primary_light_green}}
                             onPress={() => {
-                                this.props.navigation.navigate("Postings", {
+                                this.props.navigation.navigate("TrendingPostings", {
                                     label: item,
                                 });
                             }}

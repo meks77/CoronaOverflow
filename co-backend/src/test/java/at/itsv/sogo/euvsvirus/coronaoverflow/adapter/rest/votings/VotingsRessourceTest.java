@@ -24,7 +24,7 @@ class VotingsRessourceTest {
     @Test
     void givenNoUserVoteWhenVoteUp() throws SQLException {
         String postUuid = "postingUUID6";
-        String userId = "user3";
+        String userId = "Darin";
         given().header("X-CO-USERID", userId)
                 .when().put("/voting/" + postUuid + "/voteUp")
                 .then()
@@ -46,7 +46,7 @@ class VotingsRessourceTest {
 
     @Test
     void givenNoUserVoteWhenVoteDown() throws SQLException {
-        String userId = "user3";
+        String userId = "Tiana";
         String postUuid = "postingUUID2";
         given().header("X-CO-USERID", userId)
                 .when().put("/voting/" + postUuid + "/voteDown")
@@ -58,7 +58,7 @@ class VotingsRessourceTest {
     @Test
     void givenUserDownVoteWhenVoteUp() throws SQLException {
         String postUuid = "postingUUID2";
-        String userId = "user1";
+        String userId = "Tiana";
 
         given().header("X-CO-USERID", userId)
                 .when().put("/voting/" + postUuid + "/voteUp")
@@ -70,7 +70,7 @@ class VotingsRessourceTest {
     @Test
     void givenUserUpVoteWhenVoteDown() throws SQLException {
         String postUuid = "postingUUID2";
-        String userId = "user2";
+        String userId = "Tiana";
 
         given().header("X-CO-USERID", userId)
                 .when().put("/voting/" + postUuid + "/voteDown")

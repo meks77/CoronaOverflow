@@ -47,10 +47,10 @@ class PostingsResourceIT {
                 .then()
                 .statusCode(SC_OK)
                 .body("[0].postingID", equalTo("postingUUID6"))
-                .body("[0].userID", equalTo("user1"))
+                .body("[0].userID", equalTo("Darin"))
                 .body("[0].date", equalTo("2012-09-17T16:47:52Z"))
-                .body("[0].title", equalTo("Posting 6 title"))
-                .body("[0].text", equalTo("Posting text 6"));
+                .body("[0].title", equalTo("The best tools for distance learning"))
+                .body("[0].text", equalTo("As a teacher I have come across many tools for home schooling and distance learning. This is a selection of free tools that I consider the most helpful."));
     }
 
     @Test
@@ -59,7 +59,7 @@ class PostingsResourceIT {
         JsonWriter jsonWriter = Json.createWriter(requestBodyWriter);
         final String expectedTitle = "new posting title";
         final String expectedText = "new posting text";
-        final String labelName = "LabelZ";
+        final String labelName = "Masks";
         final Long expectedLabelId = LabelDbEntity.findByName(labelName).map(entity -> entity.id)
                         .orElseThrow(() -> new IllegalStateException("label for test not found"));
 

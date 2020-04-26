@@ -4,10 +4,12 @@ insert into USERS values ('Camron');
 insert into USERS values ('Alex');
 insert into USERS values ('Mattie');
 insert into USERS values ('Darin');
+insert into USERS values ('WHO');
 
 insert into LABELS values (hibernate_sequence.nextval, 'Masks');
 insert into LABELS values (hibernate_sequence.nextval, 'Home Office');
 insert into LABELS values (hibernate_sequence.nextval, 'Distance Learning');
+insert into LABELS values (hibernate_sequence.nextval, 'WHO on Corona');
 
 insert into POSTS (UUID, USER_ID, TITLE, LABEL_ID, CREATED, TEXT)
  values ( 'postingUUID1', 'Kealan', 'How to sew your own mask', 1, CURRENT_TIMESTAMP(), 'You need a cloth mask? Here is what to do: 1. take a piece of cloth and mark it according to the picture. 2. Cut the cloth and sew it together.');
@@ -23,6 +25,19 @@ insert into POSTS (UUID, USER_ID, TITLE, LABEL_ID, CREATED, TEXT)
 
 insert into POSTS (UUID, USER_ID, TITLE, LABEL_ID, CREATED, TEXT)
  values ( 'postingUUID6', 'Darin', 'The best tools for distance learning', 3, parsedatetime('17-09-2012 18:47:52', 'dd-MM-yyyy hh:mm:ss'), 'As a teacher I have come across many tools for home schooling and distance learning. This is a selection of free tools that I consider the most helpful.');
+
+insert into POSTS (UUID, USER_ID, TITLE, LABEL_ID, CREATED, TEXT)
+ values ( 'postingUUID7', 'WHO', 'About Coronavirus', 4, parsedatetime('17-09-2019 18:47:52', 'dd-MM-yyyy hh:mm:ss'), 'This is what you need to know about the virus and how to contain the spreading.');
+
+insert into POSTS (UUID, USER_ID, TITLE, LABEL_ID, CREATED, TEXT)
+ values ( 'postingUUID8', 'WHO', 'Protection from Coronavirus', 4, parsedatetime('17-09-2018 12:47:52', 'dd-MM-yyyy hh:mm:ss'), 'Measures you can take to protect yourself and others from an infection.');
+
+insert into POSTS (UUID, USER_ID, TITLE, LABEL_ID, CREATED, TEXT)
+ values ( 'postingUUID9', 'WHO', 'Corona Statistics', 4, parsedatetime('17-04-2020 13:47:52', 'dd-MM-yyyy hh:mm:ss'), 'Corona by country statistics of today.');
+
+insert into POSTS (UUID, USER_ID, TITLE, LABEL_ID, CREATED, TEXT)
+ values ( 'postingUUID10', 'WHO', 'Details for Medical Staff', 4, parsedatetime('11-03-2020 10:27:52', 'dd-MM-yyyy hh:mm:ss'), 'Medical staff information with focus on staying safe when working in hospitals or elderly care.');
+
 
 
 insert into VOTINGS values (hibernate_sequence.nextval, 'Kealan', 'postingUUID1', 'UP');

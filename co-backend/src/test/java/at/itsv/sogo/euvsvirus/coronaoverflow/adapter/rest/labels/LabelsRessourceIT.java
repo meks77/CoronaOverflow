@@ -29,20 +29,20 @@ class LabelsRessourceIT {
                 .when().get("/labels")
                 .then()
                 .statusCode(SC_OK)
-                .body("[0].label", equalTo("Label X"))
-                .body("[1].label", equalTo("LabelY"))
-                .body("[2].label", equalTo("LabelZ"))
+                .body("[0].label", equalTo("Masks"))
+                .body("[1].label", equalTo("Home Office"))
+                .body("[2].label", equalTo("Distance Learning"))
                 .body("[0].link.method", equalTo("GET"))
                 .body("[1].link.method", equalTo("GET"))
                 .body("[2].link.method", equalTo("GET"))
-                .body("[0].link.url", equalTo("/postings/forLabel/Label%20X"))
-                .body("[1].link.url", equalTo("/postings/forLabel/LabelY"))
-                .body("[2].link.url", equalTo("/postings/forLabel/LabelZ"));
+                .body("[0].link.url", equalTo("/postings/forLabel/Masks"))
+                .body("[1].link.url", equalTo("/postings/forLabel/Home%20Office"))
+                .body("[2].link.url", equalTo("/postings/forLabel/Distance%20Learning"));
     }
 
     @Test
     void givenLabelExistsWhenCreateLabel() throws SQLException {
-        final String expectedLabel = "LabelY";
+        final String expectedLabel = "Masks";
         assertLabelExistsInDatabase(expectedLabel);
 
         given()

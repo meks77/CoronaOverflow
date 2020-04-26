@@ -8,13 +8,11 @@ Especially in extreme situations, like the one we all are currently in, people b
 People all over the world face themselves in similar situations through the pandemic and through measures to contain it. Many have developed ingenious solutions to larger or smaller problems they faced, be it in professional or daily life. These Corona 'lifehacks' float around the internet in social media and on websites - we give them a dedicated community driven platform.  
 
 ## What it does
-CoronaOverflow provides general guidance about safe conduct in times of coronavirus. Users post experiences, solutions and lifehacks in posts, giving public instructions for others to use. Content is rated by the community, which promotes the display of the best solution and prevents spread of misinformation. Post are aggregated under labels, allowing for an easy sorting experience for users.
-
-CoronaOverflow provides Trends, like posts from important sources (WHO, ...).
+CoronaOverflow provides general guidance about safe conduct in times of coronavirus. Users post experiences, solutions and lifehacks in posts, giving public instructions for others to use. Content is rated by the community, which promotes the display of the best solution and prevents spread of misinformation. Posts are aggregated under labels, allowing for an intuitive sorting and browsing experience for users. Highlighting of trends, like posts from important sources (WHO, ...) is offered.
 
 ## How we built it
 
-We hacked away at a demo Application. Starting Friday night until Sunday we managed to build CoronaOverflow from scratch. 
+We hacked away at a demo application. Starting friday night until sunday we managed to build CoronaOverflow from scratch. 
 
 *Screenrecording*
 
@@ -39,11 +37,11 @@ We hacked away at a demo Application. Starting Friday night until Sunday we mana
 [User Settings](https://github.com/meks77/CoronaOverflow/blob/master/doc/Screenshots/user.png)
 
 
-The User-Interface is presented in an Android/IOS App, developed with React Native **(Milan pls Link)**. 
+The user-interface is presented in an Android/IOS App, developed with React Native **(Milan pls Link)**. 
 
-The Backend is based on Java, using quarkus (https://quarkus.io/) for a fast spin up. Currently we use an in-memory Database for demonstration purposes, but the switch to a real database (PostgreSQL, ...) would be possible within minutes thanks to automated database migration and initialisation provided by FlyWay (https://flywaydb.org/).
+The backend is based on Java, using quarkus (https://quarkus.io/) for a fast spin up. Currently we use an in-memory database for demonstration purposes, but switching to a real database (PostgreSQL, ...) would be possible within minutes thanks to automated database migration and initialisation provided by FlyWay (https://flywaydb.org/).
 
-Communication between App and Backend is done via a REST Api, allowing for future addition of different Presentation Techologies (Angular, ...)
+Communication between app and backend is done via a REST Api, allowing for future addition of different presentation techologies (Angular, ...).
 
 ## Challenges we ran into
 

@@ -14,13 +14,30 @@ CoronaOverflow provides Trends, like posts from important sources (WHO, ...).
 
 ## How we built it
 
-We hacked away at a demo Application. Starting Friday night until Sunday we managed to build CoronaOverflow from scratch. Here you can find a screenrecording: **(link)**
+We hacked away at a demo Application. Starting Friday night until Sunday we managed to build CoronaOverflow from scratch. 
 
-![Homescreen](https://github.com/meks77/CoronaOverflow/blob/master/doc/Screenshots/homescreen.png "Logo Title Text 1")
+*Screenrecording*
 
-https://github.com/meks77/CoronaOverflow/blob/master/doc/Screenshots/homescreen.png
+[Screen Recording of the Mobile App](https://github.com/meks77/CoronaOverflow/blob/master/doc/Screenrecording/video.mp4 )
 
-**screenshots, demo, link to screen recording...**
+*Screens:*
+
+[Homescreen](https://github.com/meks77/CoronaOverflow/blob/master/doc/Screenshots/homescreen.png )
+
+[Trends](https://github.com/meks77/CoronaOverflow/blob/master/doc/Screenshots/trends.png )
+
+[Trending Posts](https://github.com/meks77/CoronaOverflow/blob/master/doc/Screenshots/trends-posts.png )
+
+[Labels](https://github.com/meks77/CoronaOverflow/blob/master/doc/Screenshots/labels.png )
+
+[Create New Label](https://github.com/meks77/CoronaOverflow/blob/master/doc/Screenshots/labels-new.png)
+
+[Postings Per Label](https://github.com/meks77/CoronaOverflow/blob/master/doc/Screenshots/postings-perlabel.png )
+
+[New Posts](https://github.com/meks77/CoronaOverflow/blob/master/doc/Screenshots/postings-perlabel.png )
+
+[User Settings](https://github.com/meks77/CoronaOverflow/blob/master/doc/Screenshots/user.png)
+
 
 The User-Interface is presented in an Android/IOS App, developed with React Native **(Milan pls Link)**. 
 
@@ -48,3 +65,18 @@ Communication between App and Backend is done via a REST Api, allowing for futur
 
 - Posts may be searched for by hashtags and may be subscribed to follow them.
 - Additional 'Trend' categories, like regionbased ('Austria Top 10 Posts'),... 
+
+## How To Run It on your machine:
+
+**Requirements:**
+ - Java 8+
+ - Maven 3.6.2+
+ 
+**To Run the backend:**
+Check out the repository and run the following command to spin up the backend API on port 8080
+
+`clean compile quarkus:dev -f co-backend/pom.xml`
+
+**To Run the Frontend:**
+
+(Milan add information please)

@@ -25,7 +25,7 @@ export class TrendingLabelsScreen extends React.Component <Props> {
 
     componentDidMount = () => {
         console.log("mounted")
-        fetchData(Routes.TRENDINGS, "GET")
+        fetchData(Routes.TRENDS, "GET")
             .then((result: any) => {
                 console.log(result);
                 this.setState({

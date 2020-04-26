@@ -11,8 +11,7 @@ public interface PostingRepository {
 
     Collection<Posting> findAllByLabel(Label label);
 
-    Optional<Posting> findBy(PostingId id);
+    Optional<Posting> findByID(PostingId id);
 
     void save(Posting newPosting);
-
 }

@@ -8,6 +8,7 @@ public class PostingDto {
     private String title;
     private String text;
     private VotesDto votings;
+    private Image image;
 
     public String getPostingID() {
         return postingID;
@@ -33,6 +34,9 @@ public class PostingDto {
         return votings;
     }
 
+    public Image getImage() {
+        return image;
+    }
 
     public static final class PostingDtoBuilder {
         private String postingID;
@@ -41,6 +45,7 @@ public class PostingDto {
         private String title;
         private String text;
         private VotesDto votings;
+        private Image image;
 
         private PostingDtoBuilder() {
         }
@@ -79,6 +84,11 @@ public class PostingDto {
             return this;
         }
 
+        public PostingDtoBuilder withImage(Image image) {
+            this.image = image;
+            return this;
+        }
+
         public PostingDto build() {
             PostingDto postingDto = new PostingDto();
             postingDto.userID = this.userID;
@@ -87,6 +97,7 @@ public class PostingDto {
             postingDto.text = this.text;
             postingDto.postingID = this.postingID;
             postingDto.votings = this.votings;
+            postingDto.image = this.image;
             return postingDto;
         }
     }

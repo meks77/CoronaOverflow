@@ -9,6 +9,9 @@ import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.voting.Votings;
 import org.jsoup.Connection;
 
 import javax.enterprise.context.ApplicationScoped;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -31,10 +34,22 @@ public class PostingTranslator {
                                         votings.amountDown(),
                                         userId.flatMap( votings::voteForUser ).map(vote -> vote.isUp() ? "up" : "down").orElse(null),
                                         linksToVoteFor( posting.id()),
-                                        votings.rating()
-                        )
-                )
+                                        votings.rating()))
+                .withImage(new Image("testpicture.jpg", "image/jpeg",  getFileContent("/dummyPicture.txt")))
                 .build();
+    }
+
+    private String getFileContent(String fileName) {
+        InputStream inputStream = getClass().getResourceAsStream(fileName);
+        byte[] buffer = new byte[8192];
+        StringBuilder imageContentBuilder = new StringBuilder();
+        try {
+            inputStream.read(buffer);
+            imageContentBuilder.append(new String(buffer));
+            return imageContentBuilder.toString();
+        } catch (IOException e) {
+            throw new IllegalStateException("error while reading dummy picture", e);
+        }
     }
 
     private List<Link> linksToVoteFor(PostingId id) {

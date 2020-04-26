@@ -33,8 +33,12 @@ public class PostingRepositoryJpa implements PostingRepository {
     }
 
     @Override
-    public Optional<Posting> findBy(PostingId id) {
-        return Optional.empty();
+    public Optional<Posting> findByID(PostingId id) {
+        final Optional<PostingDbEntity> postingDbEntity = PostingDbEntity.findByID(id.val());
+        if (!postingDbEntity.isPresent()) {
+            return Optional.empty();
+        }
+        return postingDbEntity.map(translator::translateToDomain);
     }
 
     @Override

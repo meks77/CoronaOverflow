@@ -26,6 +26,8 @@ public class PostingDbEntity extends PanacheEntityBase {
 
     public String title;
 
+    public String imageName;
+
     @ManyToOne
     @JoinColumn(name = "LABEL_ID")
     public LabelDbEntity label;
@@ -41,4 +43,8 @@ public class PostingDbEntity extends PanacheEntityBase {
     static Optional<PostingDbEntity> findByID(String uuid) { return find("uuid", uuid).singleResultOptional(); }
 
     static List<PostingDbEntity> findByUser(UserId userId) { return list("userId", userId.val() ); }
+
+    public Optional<String> getImageName() {
+        return Optional.ofNullable(imageName);
+    }
 }

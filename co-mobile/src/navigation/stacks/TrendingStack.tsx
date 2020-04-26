@@ -10,7 +10,7 @@ export default function TrendingStack() {
     return (
         <Stack.Navigator>
             <Stack.Screen
-                name="TrendingLabels"
+                name="Trending"
                 component={TrendingLabelsScreen}
                 options={HeaderOptionsWithTitle('Trending')}
             />

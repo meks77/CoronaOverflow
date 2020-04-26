@@ -14,6 +14,7 @@ import React from 'react';
 import AppContainer from './navigation/AppContainer';
 import {SafeAreaView, StatusBar} from 'react-native';
 import {colors} from './styles/Colors';
+console.disableYellowBox = true;
 
 export class App extends React.Component {
   render() {

@@ -2,7 +2,7 @@
 
 This project uses React Native, a framework for building native apps using React.
 
-If you want to learn more about Quarkus, please visit its website: https://reactnative.dev/ .
+If you want to learn more about React Native, please visit its website: https://reactnative.dev/ .
 
 
 ## Setting up the development environment

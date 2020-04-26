@@ -39,7 +39,7 @@ We hacked away at a demo Application. Starting Friday night until Sunday we mana
 [User Settings](https://github.com/meks77/CoronaOverflow/blob/master/doc/Screenshots/user.png)
 
 
-The User-Interface is presented in an Android/IOS App, developed with React Native **(Milan pls Link)**. 
+The User-Interface is presented in an Android/IOS App, developed with React Native (https://reactnative.dev/). 
 
 The Backend is based on Java, using quarkus (https://quarkus.io/) for a fast spin up. Currently we use an in-memory Database for demonstration purposes, but the switch to a real database (PostgreSQL, ...) would be possible within minutes thanks to automated database migration and initialisation provided by FlyWay (https://flywaydb.org/).
 
@@ -79,4 +79,25 @@ Check out the repository and run the following command to spin up the backend AP
 
 **To Run the Frontend:**
 
-(Milan add information please)
+ - Setting up the development environment:
+   For more details about the setup of the development environment visit: https://reactnative.dev/docs/environment-setup
+
+
+ - Running the app in dev mode: 
+   Execute the following command in the terminal inside of the root directory of your project:
+
+   `npm run android` or `npm run ios`
+
+
+ - Building APK for Android: 
+ The APK (Android Package) is the installation file of the Android app. To build the APK run the following command in the terminal inside of the root directory of your project:
+ 
+   `npm run build:android`
+
+ - The output APK-file will be located in the following directory:
+
+   `<Project>/android/app/build/outputs/apk/release/app-release.apk`
+
+ - Install APK on Android device:
+   To install the APK on an Android device you have multiple options.
+   More information: https://www.androidpit.com/android-for-beginners-what-is-an-apk-file

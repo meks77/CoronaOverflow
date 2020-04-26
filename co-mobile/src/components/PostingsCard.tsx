@@ -1,9 +1,10 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, Image} from 'react-native';
 import {Button, Card, Divider, Icon, Text} from 'react-native-elements';
 import {colors} from "../styles/Colors";
 import {Posting} from "../interfaces/Posting";
 import Moment from 'moment';
+import {image_example} from "../data/Image";
 
 interface Props {
     key: number,
@@ -12,6 +13,11 @@ interface Props {
 }
 
 export class PostingsCard extends React.Component<Props> {
+
+    componentDidMount(): void {
+        //this.props.item.image.mimeType && this.props.item.image.content && console.log("++++++++++", "data:" + "image/png" + ";base64," + this.props.item.image.content)
+    }
+
     render() {
         return (
             <Card key={this.props.key}>
@@ -32,6 +38,14 @@ export class PostingsCard extends React.Component<Props> {
                     </View>
                 </View>
                 <Divider />
+                {
+
+                    <Image style={{
+                        width: "100%",
+                        height: 300,
+                        resizeMode: 'contain',
+                    }} source={{uri: this.props.item.image.content}}/>
+                }
                 <Text style={{fontSize: 20, marginVertical: 10, color: colors.dark_grey}}>
                     {this.props.item.title}
                 </Text>

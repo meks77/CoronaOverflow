@@ -1,5 +1,10 @@
 export interface Posting {
     date: string,
+    "image": {
+        content: string,
+        mimeType: string,
+        name: string
+    },
     postingID: string,
     text: string,
     title: string,

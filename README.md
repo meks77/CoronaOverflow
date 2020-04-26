@@ -45,15 +45,15 @@ Communication between app and backend is done via a REST Api, allowing for futur
 
 ## Challenges we ran into
 
-**Teamwork:** Adapting to a Team that never worked together before this challenge. Some members even met (virtually) just before we wrote the first ideas down.
+**Teamwork:** Adapting to a team that never worked together before this challenge. Some members even met (virtually) just before we wrote the first ideas down.
 
-**Coordinating frontend/backend:** Since our skillset split along those techological boundaries, we had to come up with a seamless integration of frontend and backend. That was a bit unusual for some of us, since we tend to work as fullstack Java developers.
+**Coordinating frontend/backend:** Since our skillset split along those techological boundaries, we had to come up with a seamless integration of frontend and backend. That was a bit unusual, since some of us tend to work as fullstack Java developers.
 
 ## Accomplishments that we are proud of
 
- A functional Mobile App and Backend built in two days.
+ A functional mobile app and backend built in two days.
 
- Quick Backend spinup times, fractions of a conventional Application Server. Allows for faster Development cycles.
+ Quick backend spinup times, fractions of a conventional application server. Allows for faster development cycles.
 
 ## What we learned
 

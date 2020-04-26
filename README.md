@@ -72,6 +72,7 @@ Communication between app and backend is done via a REST Api, allowing for futur
 **Requirements:**
  - Java 8+
  - Maven 3.6.2+
+ - git to checkout the source from https://github.com/meks77/CoronaOverflow.git
  
 **To Run the backend:**
 Check out the repository and run the following command to spin up the backend API on port 8080

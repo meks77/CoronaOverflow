@@ -5,7 +5,6 @@ import io.agroal.api.AgroalDataSource;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.http.ContentType;
 import org.apache.http.HttpStatus;
-import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.Test;
 
 import javax.inject.Inject;
@@ -13,6 +12,8 @@ import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonWriter;
 import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -36,14 +37,14 @@ class PostingsResourceIT {
     AgroalDataSource dataSource;
 
     @Test
-    void testLabelPostingsEndpoint() {
+    void testLabelPostingsEndpoint() throws UnsupportedEncodingException {
         String postingsUrl = given()
                 .when().get("/labels")
                 .then()
                 .statusCode(SC_OK)
                 .extract().body().path("[2].link.url");
         given()
-                .when().get(postingsUrl)
+                .when().get(URLDecoder.decode(postingsUrl, "utf8"))
                 .then()
                 .statusCode(SC_OK)
                 .body("[0].postingID", equalTo("postingUUID6"))

@@ -14,7 +14,11 @@ CoronaOverflow provides Trends, like posts from important sources (WHO, ...).
 
 ## How we built it
 
-We hacked away at a demo Application. Starting Friday night until Sunday we managed to build CoronaOverflow from scratch.
+We hacked away at a demo Application. Starting Friday night until Sunday we managed to build CoronaOverflow from scratch. Here you can find a screenrecording: **(link)**
+
+![Homescreen](https://github.com/meks77/CoronaOverflow/blob/master/doc/Screenshots/homescreen.png "Logo Title Text 1")
+
+https://github.com/meks77/CoronaOverflow/blob/master/doc/Screenshots/homescreen.png
 
 **screenshots, demo, link to screen recording...**
 

@@ -5,7 +5,7 @@ import {colors} from '../../styles/Colors';
 import {Label} from "../../interfaces/Label";
 import {Posting} from "../../interfaces/Posting";
 import {PostingsCard} from "../../components/PostingsCard";
-import {fetchData, postPosting, sendVoting} from "../../services/rest/FetchData";
+import {fetchData, sendVoting} from "../../services/rest/FetchData";
 import {Button, Icon, Input, Overlay, SearchBar, Text} from "react-native-elements";
 import {searchPosting} from "../../data/Search";
 import {getUsername} from "../../data/Username";
@@ -15,7 +15,7 @@ interface Props {
     route: any;
 };
 
-export class PostingsScreen extends React.Component<Props> {
+export class TrendingPostingsScreen extends React.Component<Props> {
 
     state = {
         overlayVisible: false,
@@ -28,17 +28,7 @@ export class PostingsScreen extends React.Component<Props> {
 
     componentDidMount = () => {
         const label: Label = this.props.route.params.label;
-        this.props.navigation.setOptions({ title: label.label,
-            headerRight: () => (
-                <TouchableOpacity style={{marginRight: 10}} onPress={() => this.setState({overlayVisible: true})}>
-                    <Icon
-                        name="add"
-                        type="material"
-                        color={colors.dark_grey}
-                        size={35}
-                    />
-                </TouchableOpacity>
-            )});
+        this.props.navigation.setOptions({ title: label.label});
         this.fetchPostings();
     }
 
@@ -121,19 +111,6 @@ export class PostingsScreen extends React.Component<Props> {
         this.setState({postingsList: list});
     }
 
-    onAddPostPressed = (title: string, message: string) => {
-        this.setState({overlayVisible: false});
-        console.log(title, message);
-        getUsername()
-            .then((userID: string) => {
-                postPosting(userID, this.props.route.params.label.label, message, title)
-                    .then((response) => {
-                        this.fetchPostings();
-                    })
-            })
-
-    }
-
     onSearchTextChange = (value: string) => {
         if (value.length > 0) {
             console.log(value);
@@ -164,59 +141,15 @@ export class PostingsScreen extends React.Component<Props> {
                     containerStyle={{backgroundColor: colors.primary_white}}
                     inputContainerStyle={{backgroundColor: colors.light_grey}} />
                 <ScrollView style={{flex: 1, backgroundColor: colors.light_grey}}>
-                    <Overlay isVisible={this.state.overlayVisible}>
-                        <View style={{flex: 1}}>
-                            <View style={{width: "100%", alignItems: "flex-end"}}>
-                                <TouchableOpacity style={{}} onPress={() => this.setState({overlayVisible: false})}>
-                                    <Icon
-                                        name="close"
-                                        type="material"
-                                        color={colors.dark_grey}
-                                        size={35}
-                                    />
-                                </TouchableOpacity>
-                            </View>
-                            <View style={{flex: 1, justifyContent: "center", alignItems: "center", padding: 10}}>
-                                <Text h4 h4Style={{color: colors.dark_grey}}>{"Add a new post"}</Text>
-                                <Text style={{color: colors.dark_grey, marginTop: 20}}>{"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut."}</Text>
-                                <Input
-                                    containerStyle={{marginTop: 30}}
-                                    label={"Title of your post"}
-                                    placeholder='Example: Hello World'
-                                    value={this.state.newPostingTitle}
-                                    onChangeText={(value) => {
-                                        console.log(value);
-                                        this.setState({newPostingTitle: value});
-                                    }}
-                                />
-                                <Input
-                                    containerStyle={{marginTop: 30}}
-                                    label={"Message of your post"}
-                                    placeholder='Example: What a beautiful day!'
-                                    value={this.state.newPostingMessage}
-                                    onChangeText={(value) => {
-                                        console.log(value);
-                                        this.setState({newPostingMessage: value});
-                                    }}
-                                    multiline={true}
-                                />
-                                <Button
-                                    title={"POST"}
-                                    titleStyle={{color: colors.primary_light_green, textAlign:"center", justifyContent: "center"}}
-                                    buttonStyle={{marginTop: 40, backgroundColor: colors.primary_white, borderWidth: 2, borderColor: colors.primary_light_green, borderRadius: 500, alignItems: "center", paddingHorizontal:50, justifyContent: "center"}}
-                                    onPress={() => {this.onAddPostPressed(this.state.newPostingTitle, this.state.newPostingMessage)}} />
-                            </View>
-                        </View>
-                    </Overlay>
                     <View style={{paddingBottom:25}}>
-                    {this.state.displayList.map((item: Posting, i: number) => (
-                        <PostingsCard
-                            key={i}
-                            item={item}
-                            onVote={(vote) => {
-                                this.sendVote(item, vote);
-                            }} />
-                    ))}
+                        {this.state.displayList.map((item: Posting, i: number) => (
+                            <PostingsCard
+                                key={i}
+                                item={item}
+                                onVote={(vote) => {
+                                    this.sendVote(item, vote);
+                                }} />
+                        ))}
                     </View>
                 </ScrollView>
             </>

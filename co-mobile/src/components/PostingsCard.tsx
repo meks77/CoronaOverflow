@@ -1,7 +1,7 @@
 import React from 'react';
 import {View} from 'react-native';
 import {Button, Card, Divider, Icon, Text} from 'react-native-elements';
-import {colors} from "../../../styles/Colors";
+import {colors} from "../styles/Colors";
 import {Posting} from "../interfaces/Posting";
 import Moment from 'moment';
 

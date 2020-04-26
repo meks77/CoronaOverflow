@@ -2,7 +2,7 @@ import React from 'react';
 import {ScrollView, TouchableOpacity, View} from 'react-native';
 import {Icon, ListItem, Overlay, Text, Input, Button, SearchBar} from 'react-native-elements';
 import {colors} from '../../styles/Colors';
-import {Label} from "./interfaces/Label";
+import {Label} from "../../interfaces/Label";
 import {NavigationStackProp} from "react-navigation-stack";
 import {fetchData, postLabel} from "../../services/rest/FetchData";
 import {Routes} from "../../services/api/Routes";
@@ -53,7 +53,8 @@ export class LabelsScreen extends React.Component <Props> {
             .then((result: any) => {
                 this.setState({
                     overlayVisible: false,
-                    labelsList: result
+                    labelsList: result,
+                    displayList: result
                 });
             })
             .catch((error:any) => {

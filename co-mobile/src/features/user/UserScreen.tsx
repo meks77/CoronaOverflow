@@ -2,7 +2,7 @@ import React from 'react';
 import {AsyncStorage, ScrollView, View} from 'react-native';
 import {Button, Icon, Input, Text} from 'react-native-elements';
 import {colors} from '../../styles/Colors';
-import {UserDetailListItem} from "./components/UserDetailListItem";
+import {UserDetailListItem} from "../../components/UserDetailListItem";
 import {Constants} from "../../services/Constants";
 import {getUsername, setUsername} from "../../data/Username";
 

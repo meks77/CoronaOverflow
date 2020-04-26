@@ -1,6 +1,6 @@
 import React from 'react';
 import {ListItem} from 'react-native-elements';
-import {colors} from "../../../styles/Colors";
+import {colors} from "../styles/Colors";
 
 interface Props {
     title: string;

@@ -1,5 +1,5 @@
-import {Label} from "../features/postings/interfaces/Label";
-import {Posting} from "../features/postings/interfaces/Posting";
+import {Label} from "../interfaces/Label";
+import {Posting} from "../interfaces/Posting";
 
 export function searchLabel(displayListInput: [], value: string): [] {
     const displayList: [] = []

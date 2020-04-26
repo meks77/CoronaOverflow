@@ -1,6 +1,7 @@
 package at.itsv.sogo.euvsvirus.coronaoverflow.adapter.persistence.postings;
 
 import at.itsv.sogo.euvsvirus.coronaoverflow.adapter.persistence.labels.LabelDbEntity;
+import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.user.UserId;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 import javax.persistence.Column;
@@ -38,4 +39,6 @@ public class PostingDbEntity extends PanacheEntityBase {
     }
 
     static Optional<PostingDbEntity> findByID(String uuid) { return find("uuid", uuid).singleResultOptional(); }
+
+    static List<PostingDbEntity> findByUser(UserId userId) { return list("userId", userId.val() ); }
 }

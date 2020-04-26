@@ -3,6 +3,7 @@ package at.itsv.sogo.euvsvirus.coronaoverflow.adapter.persistence.postings;
 import at.itsv.sogo.euvsvirus.coronaoverflow.adapter.persistence.labels.LabelDbEntity;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.label.LabelId;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.label.Title;
+import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting.Image;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting.Posting;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting.PostingId;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting.PostingProperties;
@@ -23,7 +24,8 @@ class PostingDbEntityTranslator {
                         new UserId(postingDbEntity.userId),
                         new Title(postingDbEntity.title),
                         new LabelId(String.valueOf(postingDbEntity.label.id)),
-                        new PostingText(postingDbEntity.text)));
+                        new PostingText(postingDbEntity.text),
+                        new Image(postingDbEntity.imageName)));
     }
 
     public PostingDbEntity translateToDb(Posting newPosting) {
@@ -35,6 +37,8 @@ class PostingDbEntityTranslator {
         dbEntity.title = newPosting.title().text();
         dbEntity.userId = newPosting.userId().val();
         dbEntity.uuid = newPosting.id().val();
+
+        newPosting.image().ifPresent(image -> dbEntity.imageName = image.name());
         return dbEntity;
     }
 }

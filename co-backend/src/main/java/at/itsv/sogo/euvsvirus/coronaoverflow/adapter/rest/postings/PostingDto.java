@@ -1,5 +1,7 @@
 package at.itsv.sogo.euvsvirus.coronaoverflow.adapter.rest.postings;
 
+import at.itsv.sogo.euvsvirus.coronaoverflow.adapter.rest.Link;
+
 public class PostingDto {
 
     private String postingID;
@@ -8,7 +10,7 @@ public class PostingDto {
     private String title;
     private String text;
     private VotesDto votings;
-    private Image image;
+    private Link image;
 
     public String getPostingID() {
         return postingID;
@@ -34,7 +36,7 @@ public class PostingDto {
         return votings;
     }
 
-    public Image getImage() {
+    public Link getImage() {
         return image;
     }
 
@@ -45,7 +47,7 @@ public class PostingDto {
         private String title;
         private String text;
         private VotesDto votings;
-        private Image image;
+        private Link image;
 
         private PostingDtoBuilder() {
         }
@@ -84,7 +86,7 @@ public class PostingDto {
             return this;
         }
 
-        public PostingDtoBuilder withImage(Image image) {
+        public PostingDtoBuilder withImage(Link image) {
             this.image = image;
             return this;
         }

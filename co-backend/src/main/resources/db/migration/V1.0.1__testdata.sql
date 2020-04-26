@@ -18,8 +18,8 @@ insert into POSTS (UUID, USER_ID, TITLE, LABEL_ID, CREATED, TEXT)
 insert into POSTS (UUID, USER_ID, TITLE, LABEL_ID, CREATED, TEXT)
  values ( 'postingUUID3', 'Camron', 'The different types of masks', 1, CURRENT_TIMESTAMP(), 'There are many different types of masks around, this is a short overview. Masks have different amount of protection for the user but always protect others from droplets spread by the user.');
 
-insert into POSTS (UUID, USER_ID, TITLE, LABEL_ID, CREATED, TEXT)
- values ( 'postingUUID4', 'Alex', 'How to set up a home workspace', 2, CURRENT_TIMESTAMP(), 'First of all, check your living space for suitable locations. Consider all the requirements you have. Do you need electricity or internet access?');
+insert into POSTS (UUID, USER_ID, TITLE, LABEL_ID, CREATED, TEXT, IMAGE_NAME)
+ values ( 'postingUUID4', 'Alex', 'How to set up a home workspace', 2, CURRENT_TIMESTAMP(), 'First of all, check your living space for suitable locations. Consider all the requirements you have. Do you need electricity or internet access?', 'socialDistance.png');
 insert into POSTS (UUID, USER_ID, TITLE, LABEL_ID, CREATED, TEXT)
  values ( 'postingUUID5', 'Mattie', 'Accident in home office?', 2, CURRENT_TIMESTAMP(), 'Accidents that happen during working hours in home office are treated in various ways in different countries. These countries consider it a work accident with coverage by insurance: Austria, Belgium, Ghana.');
 

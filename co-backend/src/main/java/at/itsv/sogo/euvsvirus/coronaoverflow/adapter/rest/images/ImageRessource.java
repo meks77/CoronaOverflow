@@ -20,8 +20,7 @@ public class ImageRessource {
     @Path("{imageId}")
     @Produces("image/png")
     public byte[] loadImageFromRessources(@PathParam("imageId") String imageId){
-        byte[] image = repo.findImageForId( imageId );
-        return image;
+        return repo.findImageForId( imageId );
     }
 
 }

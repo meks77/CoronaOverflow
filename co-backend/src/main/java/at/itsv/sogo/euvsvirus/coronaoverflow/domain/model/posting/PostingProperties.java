@@ -12,14 +12,17 @@ public class PostingProperties {
     private final Timestamp created;
     private final PostingText text;
     private final UserId userId;
+    private final Image image;
 
-    public PostingProperties(PostingId postingId, Timestamp created, UserId userId, Title title, LabelId labelId, PostingText text) {
+    public PostingProperties(PostingId postingId, Timestamp created, UserId userId, Title title, LabelId labelId,
+            PostingText text, Image image) {
         this.postingId = postingId;
         this.created = created;
         this.userId = userId;
         this.title = title;
         this.labelId = labelId;
         this.text = text;
+        this.image = image;
     }
 
     public Title getTitle() {
@@ -44,6 +47,10 @@ public class PostingProperties {
 
     public PostingId getPostingId() {
         return postingId;
+    }
+
+    public Image getImage() {
+        return image;
     }
 
 }

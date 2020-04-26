@@ -17,7 +17,9 @@ We hacked away at a demo application. Starting friday night until sunday we mana
 *Screenrecording*
 
 [Screen Recording of the Mobile App (MP4)](https://github.com/meks77/CoronaOverflow/blob/master/doc/Screenrecording/video.mp4 )
+
 [Screen Recording of the Mobile App (AVI)](https://github.com/meks77/CoronaOverflow/blob/master/doc/Screenrecording/video.avi )
+
 *Screens:*
 
 [Homescreen](https://github.com/meks77/CoronaOverflow/blob/master/doc/Screenshots/homescreen.png )

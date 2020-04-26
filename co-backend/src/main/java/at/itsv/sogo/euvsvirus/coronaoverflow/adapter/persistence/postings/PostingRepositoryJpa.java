@@ -38,7 +38,7 @@ public class PostingRepositoryJpa implements PostingRepository {
         if (!postingDbEntity.isPresent()) {
             return Optional.empty();
         }
-        return postingDbEntity.map(translator::translate);
+        return postingDbEntity.map(translator::translateToDomain);
     }
 
     @Override

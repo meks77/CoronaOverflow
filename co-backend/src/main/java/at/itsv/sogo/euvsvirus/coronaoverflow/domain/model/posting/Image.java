@@ -2,7 +2,11 @@ package at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting;
 
 public class Image {
 
-    private String name;
+    private final String name;
+
+    public Image(String name) {
+        this.name = name;
+    }
 
     public String name() {
         return name;

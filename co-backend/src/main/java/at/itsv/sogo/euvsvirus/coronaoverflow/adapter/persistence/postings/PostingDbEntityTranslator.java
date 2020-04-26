@@ -12,6 +12,7 @@ import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.posting.Timestamp;
 import at.itsv.sogo.euvsvirus.coronaoverflow.domain.model.user.UserId;
 
 import javax.enterprise.context.ApplicationScoped;
+import java.util.Optional;
 
 @ApplicationScoped
 class PostingDbEntityTranslator {
@@ -25,7 +26,9 @@ class PostingDbEntityTranslator {
                         new Title(postingDbEntity.title),
                         new LabelId(String.valueOf(postingDbEntity.label.id)),
                         new PostingText(postingDbEntity.text),
-                        new Image(postingDbEntity.imageName)));
+                        Optional.ofNullable(postingDbEntity.imageName)
+                                .map(imageName -> new Image(imageName))
+                                .orElse(null)));
     }
 
     public PostingDbEntity translateToDb(Posting newPosting) {

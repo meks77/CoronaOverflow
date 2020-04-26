@@ -17,6 +17,7 @@ public class Posting {
     private LabelId labelId;
     private Timestamp created;
     private PostingText text;
+    private Image image;
 
     public static Posting create(PostingProperties props) {
         Objects.requireNonNull(props, "props");
@@ -71,4 +72,7 @@ public class Posting {
         return userId;
     }
 
+    public Image image() {
+        return image;
+    }
 }
